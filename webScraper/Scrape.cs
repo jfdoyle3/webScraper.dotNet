@@ -10,10 +10,11 @@ namespace WebScraper
     class Scrape
     { 
        
-        public static void Extract()
+        public static void Extract(String site)
         {
+
             HtmlAgilityPack.HtmlWeb web = new HtmlAgilityPack.HtmlWeb();
-            HtmlAgilityPack.HtmlDocument doc = web.Load("https://www.yellowpages.com/search?search_terms=bicycles&geo_location_terms=Providence%2C+RI");
+            HtmlAgilityPack.HtmlDocument doc = web.Load(site);
            
             List<HtmlNode> HeaderNames = doc.DocumentNode
               .SelectNodes("//a[@class='business-name']").ToList();
@@ -40,7 +41,6 @@ namespace WebScraper
                 }
                 Console.ResetColor();
             }
-
 
         }
     }
