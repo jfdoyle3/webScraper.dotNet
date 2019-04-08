@@ -5,13 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace webScraper
+namespace WebScraper
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Scrape.Extract();
+            Console.WriteLine("Company Name      | Phone Number");
+             Scrape.Extract();
+
         }
     }
 }
