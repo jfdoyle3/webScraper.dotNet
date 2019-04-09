@@ -12,7 +12,7 @@ namespace WebScraper
         static void Main(string[] args)
         {
             // Scrape!!
-            Scrape.bicycleYellow();
+            Scrape.SingleClassScrape();
 
         }
     }
