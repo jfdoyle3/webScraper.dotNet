@@ -38,12 +38,6 @@ namespace WebScraper
                 Console.ResetColor();
             }
 
-            //foreach (HtmlAgilityPack.HtmlNode item in HeaderNames)
-            //   Console.WriteLine(item.InnerText);
-            
-            //foreach(HtmlAgilityPack.HtmlNode phones in phone)
-            //    Console.WriteLine(phones.InnerText);
-         
         }
 
     }
