@@ -11,9 +11,8 @@ namespace WebScraper
     {
         static void Main(string[] args)
         {
-
-            String webSite = "https://www.yellowpages.com/search?search_terms=bicycles&geo_location_terms=Providence%2C+RI";
-            Scrape.Extract(webSite);
+            // Scrape!!
+            Scrape.bicycleYellow();
 
         }
     }

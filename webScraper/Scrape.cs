@@ -7,41 +7,46 @@ using HtmlAgilityPack;
 
 namespace WebScraper
 {
-    class Scrape
-    { 
-       
-        public static void Extract(String site)
+    public static class Scrape
+    {
+        public static void bicycleYellow()
         {
-
             HtmlAgilityPack.HtmlWeb web = new HtmlAgilityPack.HtmlWeb();
-            HtmlAgilityPack.HtmlDocument doc = web.Load(site);
-           
+            HtmlAgilityPack.HtmlDocument doc = web.Load("https://www.yellowpages.com/search?search_terms=bicycles&geo_location_terms=Providence%2C+RI");
+
             List<HtmlNode> HeaderNames = doc.DocumentNode
-              .SelectNodes("//a[@class='business-name']").ToList();
-            List<HtmlNode> PhoneNumbers = doc.DocumentNode
-              .SelectNodes("//div[@class='phones phone primary']").ToList();
+                .SelectNodes("//a[@class='business-name']").ToList();
+            List<HtmlNode> phone = doc.DocumentNode
+                .SelectNodes("//div[@class='phones phone primary']").ToList();
 
             for (int index = 0; index < HeaderNames.Count; index++)
-
             {
-                HtmlAgilityPack.HtmlNode companyName = HeaderNames[index];
-                HtmlAgilityPack.HtmlNode phoneNumber = PhoneNumbers[index];
- 
-              if (index%2==0)
+                HtmlAgilityPack.HtmlNode company = HeaderNames[index];
+                HtmlAgilityPack.HtmlNode phones = phone[index];
+                if (index%2==0)
                 {
-                    
-                    Console.ForegroundColor = ConsoleColor.DarkGray;
-                    Console.Write("{0}|{1}\n", companyName.InnerText,phoneNumber.InnerText);
+                    Console.BackgroundColor = ConsoleColor.DarkGray;
+                    Console.ForegroundColor = ConsoleColor.DarkBlue;
+                    Console.WriteLine("{0}  |  {1}", company.InnerText, phones.InnerText);
                 }
                 else
                 {
-                    Console.ForegroundColor = ConsoleColor.DarkGreen;
-                    Console.Write("{0}|{1}\n", companyName.InnerText, phoneNumber.InnerText);
-
+                    Console.BackgroundColor = ConsoleColor.DarkBlue;
+                    Console.ForegroundColor = ConsoleColor.DarkGray;
+                    Console.WriteLine("{0}  |  {1}",company.InnerText,phones.InnerText);
                 }
                 Console.ResetColor();
             }
 
+            //foreach (HtmlAgilityPack.HtmlNode item in HeaderNames)
+            //   Console.WriteLine(item.InnerText);
+            
+            //foreach(HtmlAgilityPack.HtmlNode phones in phone)
+            //    Console.WriteLine(phones.InnerText);
+         
         }
+
     }
+
+
 }
