@@ -20,7 +20,7 @@ namespace WebScraper
             // Scrape!!
             Scrape scrape = new Scrape(webSite, webClass);
             scrape.SingleClassScrape();
-            scrape.ConsoleOutput();
+            //scrape.ConsoleOutput();
             
             //for (int index = 0; index < ClassName.Count; index++)
             //{

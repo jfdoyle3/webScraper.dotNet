@@ -16,9 +16,11 @@ namespace WebScraper
         {
             this.WebSite = webSite;
             this.WebClass = webClass;
+            ClassList = new List<HtmlNode>();
+            
         }
 
-        public List<HtmlNode> SingleClassScrape()
+        public void SingleClassScrape()
         {
             HtmlAgilityPack.HtmlWeb web = new HtmlAgilityPack.HtmlWeb();
             HtmlAgilityPack.HtmlDocument doc = web.Load(WebSite);
@@ -26,11 +28,11 @@ namespace WebScraper
             List<HtmlNode> ClassList = doc.DocumentNode
                 .SelectNodes(WebClass).ToList();
 
-            return ClassList;
+       //     return ClassList;
             
-        }
-        public void ConsoleOutput()
-        {
+       // }
+      //  public void ConsoleOutput()
+      //  {
             for (int index = 0; index < ClassList.Count; index++)
             {
                 HtmlAgilityPack.HtmlNode className = ClassList[index];
@@ -38,13 +40,13 @@ namespace WebScraper
                 {
                     Console.BackgroundColor = ConsoleColor.DarkGray;
                     Console.ForegroundColor = ConsoleColor.DarkBlue;
-                    Console.WriteLine("{0}  |  ", className.InnerText);
+                    Console.WriteLine("{0}", className.InnerText);
                 }
                 else
                 {
                     Console.BackgroundColor = ConsoleColor.DarkBlue;
                     Console.ForegroundColor = ConsoleColor.DarkGray;
-                    Console.WriteLine("{0}  |  ", className.InnerText);
+                    Console.WriteLine("{0}", className.InnerText);
                 }
                 Console.ResetColor();
             }
