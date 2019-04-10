@@ -11,7 +11,7 @@ namespace WebScraper
     {
         private String WebSite { get; set; }
         private String WebClass { get; set; }
-        private readonly List<HtmlNode> ClassList;
+        private List<HtmlNode> ClassList;
         public Scrape(String webSite, String webClass)
         {
             this.WebSite = webSite;
