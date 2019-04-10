@@ -7,41 +7,47 @@ using HtmlAgilityPack;
 
 namespace WebScraper
 {
-    public static class Scrape
+    public class Scrape
     {
-     
-        public static void SingleClassScrape()
+        private String WebSite { get; set; }
+        private String WebClass { get; set; }
+        private readonly List<HtmlNode> ClassList;
+        public Scrape(String webSite, String webClass)
+        {
+            this.WebSite = webSite;
+            this.WebClass = webClass;
+        }
+
+        public List<HtmlNode> SingleClassScrape()
         {
             HtmlAgilityPack.HtmlWeb web = new HtmlAgilityPack.HtmlWeb();
-            HtmlAgilityPack.HtmlDocument doc = web.Load("https://www.yellowpages.com/search?search_terms=bicycles&geo_location_terms=Providence%2C+RI");
+            HtmlAgilityPack.HtmlDocument doc = web.Load(WebSite);
 
-            List<HtmlNode> HeaderNames = doc.DocumentNode
-                .SelectNodes("//a[@class='business-name']").ToList();
-            //List<HtmlNode> phone = doc.DocumentNode
-            //    .SelectNodes("//div[@class='phones phone primary']").ToList();
+            List<HtmlNode> ClassList = doc.DocumentNode
+                .SelectNodes(WebClass).ToList();
 
-            for (int index = 0; index < HeaderNames.Count; index++)
+            return ClassList;
+            
+        }
+        public void ConsoleOutput()
+        {
+            for (int index = 0; index < ClassList.Count; index++)
             {
-                HtmlAgilityPack.HtmlNode company = HeaderNames[index];
-             //   HtmlAgilityPack.HtmlNode phones = phone[index];
-                if (index%2==0)
+                HtmlAgilityPack.HtmlNode className = ClassList[index];
+                if (index % 2 == 0)
                 {
                     Console.BackgroundColor = ConsoleColor.DarkGray;
                     Console.ForegroundColor = ConsoleColor.DarkBlue;
-                    Console.WriteLine("{0}  |  ", company.InnerText);
+                    Console.WriteLine("{0}  |  ", className.InnerText);
                 }
                 else
                 {
                     Console.BackgroundColor = ConsoleColor.DarkBlue;
                     Console.ForegroundColor = ConsoleColor.DarkGray;
-                    Console.WriteLine("{0}  |  ",company.InnerText);
+                    Console.WriteLine("{0}  |  ", className.InnerText);
                 }
                 Console.ResetColor();
             }
-
         }
-
     }
-
-
 }
