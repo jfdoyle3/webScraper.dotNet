@@ -7,49 +7,28 @@ using HtmlAgilityPack;
 
 namespace WebScraper
 {
-    public class Scrape
+    public class Scrape : Export
     {
         private String WebSite { get; set; }
         private String WebClass { get; set; }
-        private List<HtmlNode> ClassList;
+        private readonly List<HtmlNode> classList = new List<HtmlNode>();
         public Scrape(String webSite, String webClass)
         {
             this.WebSite = webSite;
             this.WebClass = webClass;
-            ClassList = new List<HtmlNode>();
-            
+           
         }
-
-        public void SingleClassScrape()
+        
+        public List<HtmlNode> SingleClassScrape()
         {
             HtmlAgilityPack.HtmlWeb web = new HtmlAgilityPack.HtmlWeb();
             HtmlAgilityPack.HtmlDocument doc = web.Load(WebSite);
-
-            List<HtmlNode> ClassList = doc.DocumentNode
+            List<HtmlNode> classList = doc.DocumentNode
                 .SelectNodes(WebClass).ToList();
 
-       //     return ClassList;
-            
-       // }
-      //  public void ConsoleOutput()
-      //  {
-            for (int index = 0; index < ClassList.Count; index++)
-            {
-                HtmlAgilityPack.HtmlNode className = ClassList[index];
-                if (index % 2 == 0)
-                {
-                    Console.BackgroundColor = ConsoleColor.DarkGray;
-                    Console.ForegroundColor = ConsoleColor.DarkBlue;
-                    Console.WriteLine("{0}", className.InnerText);
-                }
-                else
-                {
-                    Console.BackgroundColor = ConsoleColor.DarkBlue;
-                    Console.ForegroundColor = ConsoleColor.DarkGray;
-                    Console.WriteLine("{0}", className.InnerText);
-                }
-                Console.ResetColor();
-            }
+            return classList; 
         }
+          
+        
     }
 }
