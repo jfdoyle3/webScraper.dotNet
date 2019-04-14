@@ -19,7 +19,7 @@ namespace WebScraper
            
         }
         
-        public List<HtmlNode> SingleClassScrape()
+        public List<HtmlNode> NodesToList()
         {
             HtmlAgilityPack.HtmlWeb web = new HtmlAgilityPack.HtmlWeb();
             HtmlAgilityPack.HtmlDocument doc = web.Load(WebSite);
