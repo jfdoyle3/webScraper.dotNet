@@ -33,12 +33,12 @@ namespace WebScraper
 
         public void ToFile()
         {
-            Console.WriteLine("Exported to File");
+            Console.WriteLine("'Exported to File'");
         }
 
         public void ToDatabase()
         {
-            Console.WriteLine("Writen to Database");
+            Console.WriteLine("'Written to Database'");
         }
     }
 }
