@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.IO;
 using HtmlAgilityPack;
 
 namespace WebScraper
@@ -8,7 +9,6 @@ namespace WebScraper
     public class Export
     {
         
-
         public void ToScreen(List<HtmlNode> value)
         {
             for (int index = 0; index < value.Count; index++)
@@ -31,9 +31,19 @@ namespace WebScraper
             }
         }
 
-        public void ToFile()
+        public void ToFile(List<HtmlNode> value)
         {
-            Console.WriteLine("'Exported to File'");
+            
+            String fileName = @"D:\repository\webScraper\dotNET\Output.txt";
+            StreamWriter streamWriter = new StreamWriter(fileName, true); //'True' appends to file.
+            for (int index = 0; index < value.Count; index++)
+            {
+                HtmlAgilityPack.HtmlNode className = value[index];
+
+                streamWriter.WriteLine("{0}", className.InnerText);
+            }
+            streamWriter.Close();
+            Console.WriteLine("Exported to File: {0}",fileName);
         }
 
         public void ToDatabase()
@@ -43,3 +53,8 @@ namespace WebScraper
     }
 }
 
+
+
+           
+                
+            
