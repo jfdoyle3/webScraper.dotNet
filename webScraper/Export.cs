@@ -8,6 +8,8 @@ namespace WebScraper
 {
     public class Export
     {
+        public String folder = @"D:\repository\webScraper\dotNET\";
+        public String fileName = "Output.txt";
         
         public void ToScreen(List<HtmlNode> value)
         {
@@ -33,9 +35,9 @@ namespace WebScraper
 
         public void ToFile(List<HtmlNode> value)
         {
-            
-            String fileName = @"D:\repository\webScraper\dotNET\Output.txt";
-            StreamWriter streamWriter = new StreamWriter(fileName, true); //'True' appends to file.
+
+            String file = folder + fileName;
+            StreamWriter streamWriter = new StreamWriter(file, true); //'True' appends to file.
             for (int index = 0; index < value.Count; index++)
             {
                 HtmlAgilityPack.HtmlNode className = value[index];
