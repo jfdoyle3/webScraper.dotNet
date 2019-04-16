@@ -20,9 +20,14 @@ namespace WebScraper
 
 
 
-            // Site 2: Yellow Pages: Working
+            // Site 2: Yellow Pages: Working - Scrape one Class
             String webSite = "https://www.yellowpages.com/search?search_terms=bicycles&geo_location_terms=Providence%2C+RI";
             String webClass = "//a[@class='business-name']";
+
+            // Site 2: Yellow Pages: Scrape 2 Classes
+            //String webSite = "https://www.yellowpages.com/search?search_terms=bicycles&geo_location_terms=Providence%2C+RI";
+            //String webClass = "//a[@class='business-name']";
+            //String webClass1 = "//a[@class='class='phones phone primary']";
 
 
             // https://blog.scrapinghub.com/2016/10/27/an-introduction-to-xpath-with-examples
@@ -41,6 +46,7 @@ namespace WebScraper
             // Scrape!!
             Scrape scrape = new Scrape(webSite, webClass);
             List<HtmlNode> value = scrape.NodesToList();
+            //IEnumerable<HtmlNode> value = scrape.MultiClassScrape();
             scrape.ToScreen(value);
             scrape.ToDatabase();
             scrape.ToFile(value);       
