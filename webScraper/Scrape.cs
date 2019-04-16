@@ -40,7 +40,7 @@ namespace WebScraper
                 .SelectNodes(WebClass).ToList();
             List<HtmlNode> classList2 = doc.DocumentNode
                 .SelectNodes(WebClass1).ToList();
-
+            //foreach to compile list maybe
             IEnumerable<HtmlNode> completeList = classList1.Concat(classList2);
             return completeList;
 
