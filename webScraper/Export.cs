@@ -38,7 +38,7 @@ namespace WebScraper
 
             String file = Folder + FileName;
             StreamWriter streamWriter = new StreamWriter(file, true); //'True' appends to file.
-            for (int index = 0; index < value.Count; index++)
+            for (int index = 0; index < value.Count; index++) // foreach change
             {
                 HtmlAgilityPack.HtmlNode className = value[index];
 
