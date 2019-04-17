@@ -29,7 +29,7 @@ namespace WebScraper
             //String webClass = "//a[@class='business-name']";
             //String webClass1 = "//a[@class='class='phones phone primary']";
 
-
+            //
             // https://blog.scrapinghub.com/2016/10/27/an-introduction-to-xpath-with-examples
             // https://scrapinghub.github.io/xpath-playground/
             //String webClass = "//a[@class='business-name']"; // <-- XPATH
@@ -41,6 +41,7 @@ namespace WebScraper
             //    @*     all attributes of the context node
             //    [n] either [position() = n] = index: XPath index start at 1 not 0
             //    can use math //li[position()%2 = 0] : gets even elements positions
+            //
 
 
             // Scrape!!
