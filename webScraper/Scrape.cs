@@ -25,8 +25,8 @@ namespace WebScraper
         public List<HtmlNode> NodesToList()
         {
 
-            HtmlAgilityPack.HtmlWeb web = new HtmlAgilityPack.HtmlWeb();
-            HtmlAgilityPack.HtmlDocument doc = web.Load(WebSite);
+            HtmlWeb web = new HtmlWeb();
+            HtmlDocument doc = web.Load(WebSite);
             for (int xpath=0; xpath < WebClass.Length; xpath++)
             {
                List<HtmlNode> classList = doc.DocumentNode
