@@ -20,7 +20,9 @@ namespace WebScraper
                
 
 
-                Console.WriteLine("Select: A: List of Text\n        B: Search the List\n        C: MultiScrape");
+                Console.WriteLine("Select: A: List of Text\n" +
+                                  "        B: Search the List\n" +
+                                  "        C: MultiScrape");
                 String choice=Console.ReadLine();
                 
 
