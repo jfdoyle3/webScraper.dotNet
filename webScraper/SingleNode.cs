@@ -14,7 +14,8 @@ namespace WebScraper
         private String WebClass { get; set; }
 
 
-        private readonly List<HtmlNode> classList = new List<HtmlNode>();
+       private readonly List<HtmlNode> classList = new List<HtmlNode>();
+          
         public SingleNode(String webSite, String webClass)
         {
             this.WebSite = webSite;
@@ -26,18 +27,19 @@ namespace WebScraper
         public List<HtmlNode> NodesToList()
         {
 
-            HtmlWeb web = new HtmlWeb();
-            HtmlDocument doc = web.Load(WebSite);
-           
+
+
+                HtmlWeb web = new HtmlWeb();
+                HtmlDocument doc = web.Load(WebSite);
                 List<HtmlNode> classList = doc.DocumentNode
                                              .SelectNodes(WebClass)
-                                             .ToList();
-            return classList;
+                                             .ToList(); 
+                
+                return classList;
+
         }
     }
   
 }
 
 
-   
-    

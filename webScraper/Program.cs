@@ -11,17 +11,22 @@ namespace WebScraper
     
     class Program
     {
-        static void Main(string[] args)
+        static void Main(string[] arg)
         {
             try
             {
                 String webSite = "https://www.yellowpages.com/search?search_terms=bicycles&geo_location_terms=Providence%2C+RI";
                 String webClass = "//a[@class='business-name']";
+                String pattern=@"\bBicycle\b";
 
-                // Scrape!!
-                SingleNode scrapeNode = new SingleNode(webSite, webClass);
-                List<HtmlNode> node=scrapeNode.NodesToList();
-                scrapeNode.ToScreen(node);
+               // Scrape!!
+
+
+                 SingleNode scrapeNode = new SingleNode(webSite, webClass);
+                 List<HtmlNode> node=scrapeNode.NodesToList();
+                 scrapeNode.ToScreen(node);
+               //SearchNode search = new SearchNode(webSite, webClass, pattern);
+               // search.Find();
                 
                
             }

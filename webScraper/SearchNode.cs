@@ -6,14 +6,15 @@ using HtmlAgilityPack;
 
 namespace WebScraper
 {
-    public class SearchNode
+    public class SearchNode : Export
 
     {
         private String WebSite { get; set; }
         private String WebClass { get; set; }
         private String RegexPattern {get; set;}
 
-        private List<HtmlNode> classList = new List<HtmlNode>();
+        
+        private readonly List<string> extractedText = new List<string>();
         public SearchNode(string webSite, string webClass, string pattern)
         {
             this.WebSite = webSite;
@@ -22,33 +23,28 @@ namespace WebScraper
 
         }
        
-        public void SearchScrape()
+        public void Find()
         {
-            try
-            {
+                         
+            HtmlWeb web = new HtmlWeb();
+            HtmlDocument doc = web.Load(WebSite);
                
-                Regex search = new Regex(RegexPattern);
-                HtmlWeb web = new HtmlWeb();
-                HtmlDocument doc = web.Load(WebSite);
-                List<string> extractedText = new List<string>();
-                HtmlNodeCollection Node = doc.DocumentNode.SelectNodes(WebClass);
+            HtmlNodeCollection Node = doc.DocumentNode.SelectNodes(WebClass);
+            Regex search = new Regex(RegexPattern);
 
-                foreach (HtmlNode xpath in Node)
-                    if (Regex.IsMatch(xpath.InnerText, RegexPattern))
-                        extractedText.Add(xpath.InnerText);
+            foreach (HtmlNode xpath in Node)
+                if (Regex.IsMatch(xpath.InnerText, RegexPattern))
+                     extractedText.Add(xpath.InnerText);
 
-                foreach (string item in extractedText)
-                    Console.WriteLine(item);
+           foreach (string item in extractedText)
+               Console.WriteLine(item);
 
-                Console.WriteLine();
-                Console.WriteLine("Regex pattern: {0}", search);
+           Console.WriteLine();
+           Console.WriteLine("Regex pattern: {0}", search);
 
-            }
-            catch (Exception)
-            {
+           // return extractedText;
 
-                Console.WriteLine("Can't Find Web Site");
-            }
+
         }
 
     }
