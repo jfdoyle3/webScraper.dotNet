@@ -15,7 +15,7 @@ namespace WebScraper
         {
             for (int index = 0; index < value.Count; index++)
             {
-                HtmlAgilityPack.HtmlNode className = value[index];
+                HtmlNode className = value[index];
                 if (index % 2 == 0)
                 {
                     Console.BackgroundColor = ConsoleColor.DarkGray;
@@ -40,7 +40,7 @@ namespace WebScraper
             StreamWriter streamWriter = new StreamWriter(file, true); //'True' appends to file.
             for (int index = 0; index < value.Count; index++) // foreach change
             {
-                HtmlAgilityPack.HtmlNode className = value[index];
+                HtmlNode className = value[index];
 
                 streamWriter.WriteLine("{0}", className.InnerText);
             }

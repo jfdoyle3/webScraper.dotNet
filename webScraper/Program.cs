@@ -17,21 +17,21 @@ namespace WebScraper
             {
                 // Site 1: Proving Ground
                 //String webSite="https://arstechnica.com/gaming/2019/04/terry-gilliams-don-quixote-film-finally-hits-the-big-screen-after-25-years/";
-                // String webSite = "https://arstechnica.com/";
-                //  String webClass = "//p/text()";
+                //String webSite = "https://arstechnica.com/";
+               // String webClass = "//p/text()";
 
 
 
                 // Site 2: Yellow Pages: Working - Scrape one Class
-                // String webSite = "https://www.yellowpages.com/search?search_terms=bicycles&geo_location_terms=Providence%2C+RI";
-                // String webClass = "//a[@class='business-name']";
+                 String webSite = "https://www.yellowpages.com/search?search_terms=bicycles&geo_location_terms=Providence%2C+RI";
+                 String webClass = "//a[@class='business-name']";
 
                 // Site 3: Yellow Pages: Scrape 2 Classes
-                  String webSite = "https://www.yellowpages.com/search?search_terms=bicycles&geo_location_terms=Providence%2C+RI";
-                //String webClass = "//a[@class='business-name']";
+                // String webSite = "https://www.yellowpages.com/search?search_terms=bicycles&geo_location_terms=Providence%2C+RI";
+                 //String webClass = "//a[@class='business-name']";
                 // String webClass1 = "//a[@class='class='phones phone primary']";
-                string[] webClass = new string[2] { "//a[@class='business-name']", "//a[@class='class='phones phone primary']" };
-                
+                 //string webClass="//div[@class='v-card']";
+
                 // Site None: Test Try / Catch erros
                 // String webSite = "http://z.mo";
                 // String webClass = "//a[@class='business-name']";
@@ -48,14 +48,15 @@ namespace WebScraper
                 //    [n] either [position() = n] = index: XPath index start at 1 not 0
                 //    can use math //li[position()%2 = 0] : gets even elements positions
 
+               // string pattern = @"\bShop\b";
 
                 // Scrape!!
                 Scrape scrape = new Scrape(webSite, webClass);
-                List<HtmlNode> value = scrape.NodesToList();
-                //IEnumerable<HtmlNode> value = scrape.MultiClassScrape();
-                scrape.ToScreen(value);
-                scrape.ToDatabase();
-                scrape.ToFile(value);
+               // scrape.SearchScrape();
+               List<HtmlNode> value = scrape.NodesToList(webSite,webClass);
+               scrape.ToScreen(value);
+               // scrape.ToDatabase();
+               // scrape.ToFile(value);
             }
             catch (Exception)
             {
