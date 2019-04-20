@@ -15,7 +15,7 @@ namespace WebScraper
         {
             try
             {
-                Console.WriteLine("Select: A: List of Text\n        B:Search the List");
+                Console.WriteLine("Select: A: List of Text\n        B: Search the List");
                 String choice=Console.ReadLine();
                 String webSite = "https://www.yellowpages.com/search?search_terms=bicycles&geo_location_terms=Providence%2C+RI";
                 String webClass = "//a[@class='business-name']";
@@ -33,7 +33,7 @@ namespace WebScraper
                 }
                 else
                 {
-                    Console.Write("Search: ");
+                    Console.Write("Search: \npress Enter to get full list");
                     String findMe = Console.ReadLine();
                     String pattern = @"\b" + findMe + "\\b";
                     SearchNode search = new SearchNode(webSite, webClass, pattern);
