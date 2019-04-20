@@ -36,8 +36,8 @@ namespace WebScraper
                 if (Regex.IsMatch(xpath.InnerText, RegexPattern))
                      extractedText.Add(xpath.InnerText);
 
-           foreach (string item in extractedText)
-               Console.WriteLine(item);
+           foreach (string foundPattern in extractedText)
+               Console.WriteLine(foundPattern);
 
            Console.WriteLine();
            Console.WriteLine("Regex pattern: {0}", search);
