@@ -15,6 +15,7 @@ namespace WebScraper
 
 
        private readonly List<HtmlNode> classList = new List<HtmlNode>();
+
           
         public SingleNode(String webSite, String webClass)
         {
