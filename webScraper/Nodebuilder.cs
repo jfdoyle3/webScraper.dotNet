@@ -5,17 +5,17 @@ using HtmlAgilityPack;
 
 namespace WebScraper
 {
-    public class Nodebuilder
+    public class NodeBuilder
     {
         private String WebSite { get; set; }
-        private String WebClass { get; set; }
+        private String XPath { get; set; }
 
         private readonly StringBuilder builder = new StringBuilder();
 
-        public Nodebuilder(String webSite, String webClass)
+        public NodeBuilder(String webSite, String xPath)
         {
             this.WebSite = webSite;
-            this.WebClass = webClass;
+            this.XPath = xPath;
 
         }
 
@@ -27,13 +27,13 @@ namespace WebScraper
 
             HtmlWeb web = new HtmlWeb();
             HtmlDocument doc = web.Load(WebSite);
-            HtmlNodeCollection classList = doc.DocumentNode.SelectNodes(WebClass);
+            HtmlNodeCollection classList = doc.DocumentNode.SelectNodes(XPath);
 
             foreach(HtmlNode node in classList)
             {
-                builder.Append(node.InnerText);
+                builder.Append(node.InnerText+"\n");
             }
-
+            builder.ToString();
             Console.WriteLine(builder);
             //  return classList;
         }

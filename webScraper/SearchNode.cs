@@ -10,15 +10,15 @@ namespace WebScraper
 
     {
         private String WebSite { get; set; }
-        private String WebClass { get; set; }
+        private String XPath { get; set; }
         private String RegexPattern {get; set;}
 
         
         private readonly List<string> extractedText = new List<string>();
-        public SearchNode(string webSite, string webClass, string pattern)
+        public SearchNode(string webSite, string xPath, string pattern)
         {
             this.WebSite = webSite;
-            this.WebClass = webClass;
+            this.XPath = xPath;
             this.RegexPattern = pattern;
 
         }
@@ -29,7 +29,7 @@ namespace WebScraper
             HtmlWeb web = new HtmlWeb();
             HtmlDocument doc = web.Load(WebSite);
                
-            HtmlNodeCollection Node = doc.DocumentNode.SelectNodes(WebClass);
+            HtmlNodeCollection Node = doc.DocumentNode.SelectNodes(XPath);
             Regex search = new Regex(RegexPattern);
 
             foreach (HtmlNode xpath in Node)
