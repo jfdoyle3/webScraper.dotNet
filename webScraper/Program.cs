@@ -20,9 +20,10 @@ namespace WebScraper
                
 
 
-                Console.WriteLine("Select: A: List of Text\n" +
+                Console.WriteLine("Select: A: List using this XPath: {0}\n" +
                                   "        B: Search the List\n" +
-                                  "        C: MultiScrape");
+                                  "        C: MultiScrape\n" +
+                                  "        D: NodeBuilder",webClass);
                 String choice=Console.ReadLine();
                 
 
@@ -51,6 +52,12 @@ namespace WebScraper
                         MultiClass MultiNode = new MultiClass(webSite, webClass, webClass2);
                         List<HtmlNode> multiNode = MultiNode.MultiNodesToList();
                         MultiNode.ToScreen(multiNode);
+                        break;
+
+                    case "d":
+                    case "D":
+                        Nodebuilder nodeBuilder = new Nodebuilder(webSite, webClass);
+                        nodeBuilder.NodesToBuilder();
                         break;
                 }
                
