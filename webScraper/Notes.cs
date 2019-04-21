@@ -6,14 +6,16 @@ namespace WebScraper
 {
     class Notes
     {
+        // Use StringBuilder
+
         // Site 1: Arstechnica
         //String webSite="https://arstechnica.com/gaming/2019/04/terry-gilliams-don-quixote-film-finally-hits-the-big-screen-after-25-years/";
         //String webSite = "https://arstechnica.com/";
         // String webClass = "//p/text()";
 
         // Site 2: Yellow Pages: Working - Scrape one Class
-        String webSite = "https://www.yellowpages.com/search?search_terms=bicycles&geo_location_terms=Providence%2C+RI";
-        String webClass = "//a[@class='business-name']";
+       // String webSite = "https://www.yellowpages.com/search?search_terms=bicycles&geo_location_terms=Providence%2C+RI";
+       // String webClass = "//a[@class='business-name']";
 
         // Site 3: Yellow Pages: Scrape 2 Classes
         // String webSite = "https://www.yellowpages.com/search?search_terms=bicycles&geo_location_terms=Providence%2C+RI";
