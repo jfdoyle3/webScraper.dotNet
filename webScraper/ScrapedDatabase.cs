@@ -15,7 +15,7 @@ namespace WebScraper
         public void DisplayData()
         {
          string connectionString;
-        SqlConnection cnn;
+         SqlConnection cnn;
 
         connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\repository\webScraper\dotNET\webScraper.dotNet\webScraper\ScrapeDB.mdf;Integrated Security=True";
 
@@ -37,6 +37,31 @@ namespace WebScraper
             }
             Console.WriteLine(Output);
             cnn.Close();
+            Console.WriteLine("Database Closed");
+        }
+        public void InsertDatabase()
+        {
+            string connectionString;
+            SqlConnection cnn;
+
+            connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\repository\webScraper\dotNET\webScraper.dotNet\webScraper\ScrapeDB.mdf;Integrated Security=True";
+
+            cnn = new SqlConnection(connectionString);
+
+            cnn.Open();
+            Console.WriteLine("Database connected/Open");
+
+            SqlCommand insert;
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            String sql = "";
+            sql = "Insert into ScrapedData (Id,xpath1) values(2,'"+"Doyle"+"')";
+            insert = new SqlCommand(sql, cnn);
+            adapter.InsertCommand = new SqlCommand(sql, cnn);
+            adapter.InsertCommand.ExecuteNonQuery();
+
+            insert.Dispose();
+            cnn.Close();
+
             Console.WriteLine("Database Closed");
         }
         

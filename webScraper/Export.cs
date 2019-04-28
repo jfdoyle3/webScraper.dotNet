@@ -54,34 +54,66 @@ namespace WebScraper
             Console.WriteLine("Exported to File: {0}",FileName);
         }
 
-        public void ToDatabase()
+        public void ToDatabase(List<HtmlNode> value)
         {
-            string connectionString;
-            SqlConnection cnn;
+            // Connect and Open Database
+            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\repository\webScraper\dotNET\webScraper.dotNet\webScraper\ScrapeDB.mdf;Integrated Security=True";
+            SqlConnection dbConnect = new SqlConnection(connectionString);
+            dbConnect.Open();
 
-            connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\repository\webScraper\dotNET\webScraper.dotNet\webScraper\ScrapeDB.mdf;Integrated Security=True";
+            // Create a Temp DataTable
+            DataTable tempTable = new DataTable();
+            tempTable.Columns.Add("Id");
+            tempTable.Columns.Add("xpath1");
 
-            cnn = new SqlConnection(connectionString);
-
-            cnn.Open();
-            Console.WriteLine("Database connected/Open");
-
-            SqlCommand viewTable;
-            SqlDataReader dataReader;
-            String sql, Output = "";
-            sql = "Select Id,xpath1 from ScrapedData";
-            viewTable = new SqlCommand(sql, cnn);
-            dataReader = viewTable.ExecuteReader();
-
-            while (dataReader.Read())
+            //Add in Scraped Data to Temp Table
+            for (int index = 1; index < value.Count; index++)
             {
-                Output = Output + dataReader.GetValue(0) + " - " + dataReader.GetValue(1) + "\n";
+                HtmlNode className = value[index];
+                tempTable.Rows.Add(index++ , className.InnerText);
             }
-            Console.WriteLine(Output);
-            cnn.Close();
-            Console.WriteLine("Database Closed");
 
-          //  Console.WriteLine("'Written to Database'");
+            // BulkCopy from Temp Table to Database Table
+            using (SqlBulkCopy sqlBulk = new SqlBulkCopy(connectionString))
+            {
+                sqlBulk.DestinationTableName = "ScrapedData";
+                sqlBulk.WriteToServer(tempTable);
+            }
+            dbConnect.Close();
+            Console.WriteLine("'Written to Database'");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            //Console.WriteLine("Database connected/Open");
+
+            // SqlCommand insert;
+            // SqlDataAdapter adapter = new SqlDataAdapter();
+            // String sql = "";
+            // for (int index = 0; index < value.Count; index++)
+            // {
+            //     HtmlNode className = value[index];
+            //     sql = "Insert into ScrapedData (Id,xpath1) values(index,'" + className.InnerText + "')";
+            //     insert = new SqlCommand(sql, cnn);
+            //     adapter.InsertCommand = new SqlCommand(sql, cnn);
+            //     adapter.InsertCommand.ExecuteNonQuery();
+            // }
+            // insert.Dispose();
+            // cnn.Close();
+
+            // Console.WriteLine("Database Closed");
+
+            //  
         }
     }
 }
