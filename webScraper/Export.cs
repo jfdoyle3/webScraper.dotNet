@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using HtmlAgilityPack;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
+
+
+
 
 namespace WebScraper
 {
@@ -50,7 +56,32 @@ namespace WebScraper
 
         public void ToDatabase()
         {
-            Console.WriteLine("'Written to Database'");
+            string connectionString;
+            SqlConnection cnn;
+
+            connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\repository\webScraper\dotNET\webScraper.dotNet\webScraper\ScrapeDB.mdf;Integrated Security=True";
+
+            cnn = new SqlConnection(connectionString);
+
+            cnn.Open();
+            Console.WriteLine("Database connected/Open");
+
+            SqlCommand viewTable;
+            SqlDataReader dataReader;
+            String sql, Output = "";
+            sql = "Select Id,xpath1 from ScrapedData";
+            viewTable = new SqlCommand(sql, cnn);
+            dataReader = viewTable.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                Output = Output + dataReader.GetValue(0) + " - " + dataReader.GetValue(1) + "\n";
+            }
+            Console.WriteLine(Output);
+            cnn.Close();
+            Console.WriteLine("Database Closed");
+
+          //  Console.WriteLine("'Written to Database'");
         }
     }
 }
