@@ -9,8 +9,8 @@ namespace WebScraper
     public class MultiClass : Export
     {
         private String WebSite { get; set; }
-        private String XPath { get; set; }
-        private String XPath2 { get; set; }
+        private String XPath { get;}
+        private String XPath2 { get;}
 
 
         private readonly List<HtmlNode> classList = new List<HtmlNode>();

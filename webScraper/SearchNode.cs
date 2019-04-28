@@ -9,9 +9,9 @@ namespace WebScraper
     public class SearchNode : Export
 
     {
-        private String WebSite { get; set; }
-        private String XPath { get; set; }
-        private String RegexPattern {get; set;}
+        private String WebSite { get;  set; }
+        private String XPath { get;  set; }
+        private String RegexPattern { get; set; }
 
         
         private readonly List<string> extractedText = new List<string>();
@@ -32,9 +32,9 @@ namespace WebScraper
             HtmlNodeCollection Node = doc.DocumentNode.SelectNodes(XPath);
             Regex search = new Regex(RegexPattern);
 
-            foreach (HtmlNode xpath in Node)
-                if (Regex.IsMatch(xpath.InnerText, RegexPattern))
-                     extractedText.Add(xpath.InnerText);
+            foreach (HtmlNode node in Node)
+                if (Regex.IsMatch(node.InnerText, RegexPattern))
+                     extractedText.Add(node.InnerText);
 
            foreach (string foundPattern in extractedText)
                Console.WriteLine(foundPattern);

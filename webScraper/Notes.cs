@@ -6,7 +6,7 @@ namespace WebScraper
 {
     class Notes
     {
-        // Use StringBuilder
+        // Use List
 
         // Site 1: Arstechnica
         //String webSite="https://arstechnica.com/gaming/2019/04/terry-gilliams-don-quixote-film-finally-hits-the-big-screen-after-25-years/";

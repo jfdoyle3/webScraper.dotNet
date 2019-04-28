@@ -18,7 +18,7 @@ namespace WebScraper
                 String webSite = "https://www.yellowpages.com/search?search_terms=bicycles&geo_location_terms=Providence%2C+RI";
                 String xPath = "//a[@class='business-name']";
                
-
+  
 
                 Console.WriteLine("Select: A: List using this XPath: {0}\n" +
                                   "        B: Search the List\n" +
