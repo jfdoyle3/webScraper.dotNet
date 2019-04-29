@@ -12,6 +12,7 @@ namespace WebScraper
 {
     class ScrapedDatabase
     {
+       
         public void DisplayData()
         {
          string connectionString;
@@ -27,7 +28,7 @@ namespace WebScraper
             SqlCommand viewTable;
         SqlDataReader dataReader;
         String sql, Output = "";
-        sql = "Select Id,xpath1 from ScrapedData";
+        sql = "Select ID,Company from YellowPages";
             viewTable = new SqlCommand(sql, cnn);
         dataReader = viewTable.ExecuteReader();
 
@@ -39,31 +40,31 @@ namespace WebScraper
             cnn.Close();
             Console.WriteLine("Database Closed");
         }
-        public void InsertDatabase()
-        {
-            string connectionString;
-            SqlConnection cnn;
+        //public void InsertDatabase()
+        //{
+        //    string connectionString;
+        //    SqlConnection cnn;
 
-            connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\repository\webScraper\dotNET\webScraper.dotNet\webScraper\ScrapeDB.mdf;Integrated Security=True";
+        //    connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\repository\webScraper\dotNET\webScraper.dotNet\webScraper\ScrapeDB.mdf;Integrated Security=True";
 
-            cnn = new SqlConnection(connectionString);
+        //    cnn = new SqlConnection(connectionString);
 
-            cnn.Open();
-            Console.WriteLine("Database connected/Open");
+        //    cnn.Open();
+        //    Console.WriteLine("Database connected/Open");
 
-            SqlCommand insert;
-            SqlDataAdapter adapter = new SqlDataAdapter();
-            String sql = "";
-            sql = "Insert into ScrapedData (Id,xpath1) values(2,'"+"Doyle"+"')";
-            insert = new SqlCommand(sql, cnn);
-            adapter.InsertCommand = new SqlCommand(sql, cnn);
-            adapter.InsertCommand.ExecuteNonQuery();
+        //    SqlCommand insert;
+        //    SqlDataAdapter adapter = new SqlDataAdapter();
+            
+        //    String sql = "Insert into ScrapedData (Id,xpath1) values(2,'"+"Doyle"+"')";
+        //    insert = new SqlCommand(sql, cnn);
+        //    adapter.InsertCommand = new SqlCommand(sql, cnn);
+        //    adapter.InsertCommand.ExecuteNonQuery();
 
-            insert.Dispose();
-            cnn.Close();
+        //    insert.Dispose();
+        //    cnn.Close();
 
-            Console.WriteLine("Database Closed");
-        }
+        //    Console.WriteLine("Database Closed");
+        //}
         
     }
 }

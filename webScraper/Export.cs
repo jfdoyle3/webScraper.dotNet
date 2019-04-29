@@ -17,6 +17,7 @@ namespace WebScraper
         private String Folder = @"D:\repository\webScraper\dotNET\";
         private String FileName = "Output.txt";
         
+        
         public void ToScreen(List<HtmlNode> value)
         {
             for (int index = 0; index < value.Count; index++)
@@ -54,48 +55,27 @@ namespace WebScraper
             Console.WriteLine("Exported to File: {0}",FileName);
         }
 
-        public void ToDatabase(List<HtmlNode> value)
+        public void ToDatabase(DataTable tempTable)
         {
             // Connect and Open Database
             string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\repository\webScraper\dotNET\webScraper.dotNet\webScraper\ScrapeDB.mdf;Integrated Security=True";
             SqlConnection dbConnect = new SqlConnection(connectionString);
             dbConnect.Open();
 
-            // Create a Temp DataTable
-            DataTable tempTable = new DataTable();
-            tempTable.Columns.Add("Id");
-            tempTable.Columns.Add("xpath1");
-
-            //Add in Scraped Data to Temp Table
-            for (int index = 1; index < value.Count; index++)
-            {
-                HtmlNode className = value[index];
-                tempTable.Rows.Add(index++ , className.InnerText);
-            }
-
-            // BulkCopy from Temp Table to Database Table
             using (SqlBulkCopy sqlBulk = new SqlBulkCopy(connectionString))
             {
-                sqlBulk.DestinationTableName = "ScrapedData";
+                sqlBulk.DestinationTableName = "YellowPages";
                 sqlBulk.WriteToServer(tempTable);
             }
+
+            // Close Database
             dbConnect.Close();
             Console.WriteLine("'Written to Database'");
+        }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-            //Console.WriteLine("Database connected/Open");
+        public void InsertDatabase()
+        {
+          //Console.WriteLine("Database connected/Open");
 
             // SqlCommand insert;
             // SqlDataAdapter adapter = new SqlDataAdapter();
@@ -113,13 +93,21 @@ namespace WebScraper
 
             // Console.WriteLine("Database Closed");
 
-            //  
+             
         }
     }
-}
 
 
-
-           
-                
+    //Copy the DataTable to SQL Server
+    //        using(SqlConnection dbConnection = new SqlConnection("Data Source=dbhost;Initial Catalog=dbname;Integrated Security=SSPI;Connection Timeout=60;Min Pool Size=2;Max Pool Size=20;"))
+    //        {
+    //            dbConnection.Open();
+    //            using (SqlBulkCopy s = new SqlBulkCopy(dbConnection))
+    //            {
+    //                s.DestinationTableName = dailySalesStats.TableName;
+    //                foreach (var column in dailySalesStats.Columns)
+    //                    s.ColumnMappings.Add(column.ToString(), column.ToString());
+    //                s.WriteToServer(dailySalesStats);
+    //            }
+}               
             

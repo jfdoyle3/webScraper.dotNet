@@ -6,6 +6,13 @@ namespace WebScraper
 {
     class ConsoleMenu
     {
+        //Console.WriteLine("Select: A: List using this XPath: {0}\n" +
+        //                  "        B: Search the List\n" +
+        //                  "        C: MultiScrape\n" +
+        //                  "        D: NodeBuilder",xPath);
+        //String choice=Console.ReadLine();
+
+
         ////Menu
         //switch  (choice)
         //{
