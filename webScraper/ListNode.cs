@@ -27,7 +27,7 @@ namespace WebScraper
         {
 
 
-
+            //TODO: HtmlWeb / Document load to the Connection Class
             HtmlWeb web = new HtmlWeb();
             HtmlDocument doc = web.Load(WebSite);
             List<HtmlNode> classList = doc.DocumentNode

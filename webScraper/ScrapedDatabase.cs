@@ -15,20 +15,21 @@ namespace WebScraper
        
         public void DisplayData()
         {
-         string connectionString;
-         SqlConnection cnn;
+            //TODO: Move to Connection Class
+
 
             // HAL9000
-            //connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\repository\webScraper\dotNET\webScraper.dotNet\webScraper\ScrapeDB.mdf;Integrated Security=True";
+            //string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\repository\webScraper\dotNET\webScraper.dotNet\webScraper\ScrapeDB.mdf;Integrated Security=True";
 
             // Amuzement
-            connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\repository\webScraper\dotNET\webScraper.dotNet\webScraper\ScrapeDB.mdf; Integrated Security = True";
+            string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\repository\webScraper\dotNET\webScraper.dotNet\webScraper\ScrapeDB.mdf; Integrated Security = True";
 
-            cnn = new SqlConnection(connectionString);
+          SqlConnection  cnn = new SqlConnection(connectionString);
 
         cnn.Open();
             Console.WriteLine("Database connected/Open");
 
+         // View Table
         SqlCommand viewTable;
         SqlDataReader dataReader;
         String sql, Output = "";
@@ -41,6 +42,8 @@ namespace WebScraper
                 Output = Output + dataReader.GetValue(0) + " - " + dataReader.GetValue(1) + "\n";
             }
             Console.WriteLine(Output);
+
+            // DB Close
             cnn.Close();
             Console.WriteLine("Database Closed");
         }
