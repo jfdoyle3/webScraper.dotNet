@@ -18,21 +18,25 @@ namespace WebScraper
             try
             {
                 String webSite = "https://www.yellowpages.com/search?search_terms=bicycles&geo_location_terms=Providence%2C+RI";
-           
-              //String[] xPath =new string[2] { "//a[@class='class='phones phone primary']", "//a[@class='business-name']" };
                 String xPath = "//a[@class='business-name']";
-                 
+                //String[] xPath =new string[2] { "//a[@class='class='phones phone primary']", "//a[@class='business-name']" };
+                //foreach (string query in xPath)
+                //    Console.WriteLine(query);
 
-                ListNode scrapeNode = new ListNode(webSite, xPath);
-                List<HtmlNode> node = scrapeNode.NodesToList();
-
-                DataTable scrapedData=scrapeNode.NodestoTable();
-                scrapeNode.ToDatabase(scrapedData);
+                ListNode company = new ListNode(webSite,xPath);
+                
 
 
-                //String xPath1 = "//a[@class='class='phones phone primary']";
-                //ListNode scrapeNode1 = new ListNode(webSite, xPath1);         
-                //List<HtmlNode> node1 = scrapeNode1.NodesToList();
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
 
             }       
             catch (Exception)

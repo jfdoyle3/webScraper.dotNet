@@ -6,7 +6,7 @@ using HtmlAgilityPack;
 
 namespace WebScraper
 {
-    public class SearchNode : Export
+    public class Search : Export
 
     {
         private String WebSite { get;  set; }
@@ -15,7 +15,7 @@ namespace WebScraper
 
         
         private readonly List<string> extractedText = new List<string>();
-        public SearchNode(string webSite, string xPath, string pattern)
+        public Search(string webSite, string xPath, string pattern)
         {
             this.WebSite = webSite;
             this.XPath = xPath;

@@ -38,13 +38,15 @@ namespace WebScraper
            
               return classList;
         }
-        public dynamic NodestoTable()
+        public dynamic NodestoTable(List<HtmlNode> classList)
         {
             String[] headers = new string[] { "ID", "Company" };
             DataTable tempTable = new DataTable();
 
-            for (int header = 0; header < headers.Length; header++)
-                tempTable.Columns.Add(headers[header]);
+            //for (int header = 0; header < headers.Length; header++)
+            //    tempTable.Columns.Add(headers[header]);
+            foreach (string header in headers)
+                tempTable.Columns.Add(header);
 
             //Add in Scraped Data to Temp Table
             for (int index = 1; index < classList.Count; index++)
