@@ -38,7 +38,7 @@ namespace WebScraper
            
               return classList;
         }
-        public dynamic NodestoTable(List<HtmlNode> classList)
+        public dynamic NodesToTable(List<HtmlNode> classList)
         {
             String[] headers = new string[] { "ID", "Company" };
             DataTable tempTable = new DataTable();
