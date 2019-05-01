@@ -35,7 +35,7 @@ namespace WebScraper
         sql = "Select ID,Company from YellowPages";
             viewTable = new SqlCommand(sql, cnn);
         dataReader = viewTable.ExecuteReader();
-
+            // TODO:  Have to alter code to accept dynamic values: fixed 2 variable current
             while (dataReader.Read())
             {
                 Output = Output + dataReader.GetValue(0) + " - " + dataReader.GetValue(1) + "\n";
