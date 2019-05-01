@@ -16,7 +16,7 @@ namespace WebScraper
 
 
         private readonly List<HtmlNode> classList = new List<HtmlNode>();
-        // private readonly List<HtmlNode> classList2 = new List<HtmlNode>();
+        
 
         public MultiClass(String webSite, String xPath)
         {
@@ -39,22 +39,7 @@ namespace WebScraper
         //    classList.AddRange(classList2);
         //    return classList;
         //}
-        public dynamic NodestoTable(List<HtmlNode> value)
-        {
-            String[] headers = new string[] { "ID", "Company" };
-            DataTable tempTable = new DataTable();
-
-            for (int header = 0; header < headers.Length; header++)
-                tempTable.Columns.Add(headers[header]);
-
-            //Add in Scraped Data to Temp Table
-            for (int index = 1; index < value.Count; index++)
-            {
-                HtmlNode className = value[index];
-                tempTable.Rows.Add(index, className.InnerText);
-            }
-            return tempTable;
-        }
+       
 
     }
 }

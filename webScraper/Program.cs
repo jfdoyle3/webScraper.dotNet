@@ -6,7 +6,6 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
-using System.Data.SqlClient;
 
 
 namespace WebScraper
@@ -22,13 +21,21 @@ namespace WebScraper
            
               //String[] xPath =new string[2] { "//a[@class='class='phones phone primary']", "//a[@class='business-name']" };
                 String xPath = "//a[@class='business-name']";
+                 
+
                 ListNode scrapeNode = new ListNode(webSite, xPath);
                 List<HtmlNode> node = scrapeNode.NodesToList();
-                MultiClass table = new MultiClass(webSite,xPath);
-                DataTable scrapeData=table.NodestoTable(node);
-                table.ToDatabase(scrapeData);
-        }
-           catch (Exception)
+
+                DataTable scrapedData=scrapeNode.NodestoTable();
+                scrapeNode.ToDatabase(scrapedData);
+
+
+                //String xPath1 = "//a[@class='class='phones phone primary']";
+                //ListNode scrapeNode1 = new ListNode(webSite, xPath1);         
+                //List<HtmlNode> node1 = scrapeNode1.NodesToList();
+
+            }       
+            catch (Exception)
             {
 
                 Console.WriteLine("Error:\nIn Code\nnetwork problem\nwebsite not working\nXPath error");

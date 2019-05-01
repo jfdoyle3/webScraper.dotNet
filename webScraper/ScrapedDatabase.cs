@@ -25,7 +25,7 @@ namespace WebScraper
         cnn.Open();
             Console.WriteLine("Database connected/Open");
 
-            SqlCommand viewTable;
+        SqlCommand viewTable;
         SqlDataReader dataReader;
         String sql, Output = "";
         sql = "Select ID,Company from YellowPages";

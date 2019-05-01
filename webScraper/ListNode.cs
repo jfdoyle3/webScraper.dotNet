@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
+using System.Data.SqlClient;
 using HtmlAgilityPack;
 
 namespace WebScraper
@@ -35,6 +37,22 @@ namespace WebScraper
            
            
               return classList;
+        }
+        public dynamic NodestoTable()
+        {
+            String[] headers = new string[] { "ID", "Company" };
+            DataTable tempTable = new DataTable();
+
+            for (int header = 0; header < headers.Length; header++)
+                tempTable.Columns.Add(headers[header]);
+
+            //Add in Scraped Data to Temp Table
+            for (int index = 1; index < classList.Count; index++)
+            {
+                HtmlNode className = classList[index];
+                tempTable.Rows.Add(index, className.InnerText);
+            }
+            return tempTable;
         }
     }
 }
