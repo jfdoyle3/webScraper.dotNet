@@ -10,9 +10,9 @@ namespace WebScraper
 {
     public class MultiClass : Export
     {
-        private String WebSite { get; }
-        private String XPath { get; }
-        private String XPath2 { get; }
+        private String WebSite { get; set; }
+        private String XPath { get; set;  }
+        private String XPath2 { get; set; }
 
 
 
@@ -44,7 +44,7 @@ namespace WebScraper
         }
         public dynamic MultiNodestoTable(List<HtmlNode> classList)
         {
-            String[] headers = new string[] { "ID", "Company" };
+            String[] headers = new string[] { "ID", "Company", "Phone" };
             DataTable tempTable = new DataTable();
 
             for (int header = 0; header < headers.Length; header++)
