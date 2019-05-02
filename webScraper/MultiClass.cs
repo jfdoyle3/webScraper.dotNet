@@ -23,7 +23,7 @@ namespace WebScraper
         {
             this.WebSite = webSite;
             this.XPath = xPath;
-            this.XPath2 = XPath2;
+            this.XPath2 = xPath2;
             
 
         }
@@ -42,7 +42,7 @@ namespace WebScraper
             classList.AddRange(classList2);
             return classList;
         }
-        public dynamic MultiNodestoTable(List<HtmlNode> classList)
+        public dynamic MultiNodestoTable(List<HtmlNode> classList, List<HtmlNode> classList2)
         {
             String[] headers = new string[] { "ID", "Company", "Phone" };
             DataTable tempTable = new DataTable();
@@ -54,11 +54,45 @@ namespace WebScraper
             for (int index = 1; index < classList.Count; index++)
             {
                 HtmlNode className = classList[index];
+                HtmlNode className2 = classList2[index];
                 tempTable.Rows.Add(index, className.InnerText);
+                tempTable.Rows.Add(index,className2.InnerText);
             }
+            
             return tempTable;
         }
+        public void MultiNodesToTable()
+        {
+            
+            DataTable tempTable = new DataTable();
 
+            String[] headers = new string[] { "ID", "Company", "Phone" };
+            for (int header = 0; header < headers.Length; header++)
+                tempTable.Columns.Add(headers[header]);
+
+            HtmlWeb web = new HtmlWeb();
+            HtmlDocument doc = web.Load(WebSite);
+            List<HtmlNode> classList = doc.DocumentNode
+                                         .SelectNodes(XPath)
+                                         .ToList();
+
+            List<HtmlNode> classList2 = doc.DocumentNode
+                                         .SelectNodes(XPath2)
+                                          .ToList();
+            classList.AddRange(classList2);
+            foreach(HtmlNode item in classList)
+                Console.WriteLine(item);
+                                         
+         // Add in Scraped Data to Temp Table
+            //for (int index = 1; index < classList.Count; index++)
+            //{
+            //    HtmlNode className = classList[index];
+            //    HtmlNode className2 = classList2[index];
+            //    tempTable.Rows.Add(index, className.InnerText);
+            //    tempTable.Rows.Add(index, className2.InnerText);
+            //}
+            // return tempTable;
+        }
 
 
 

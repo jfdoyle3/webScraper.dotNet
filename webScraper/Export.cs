@@ -78,7 +78,16 @@ namespace WebScraper
             dbConnect.Close();
             Console.WriteLine("'Written to Database'");
         }
-
+        public void ViewDataTable (DataTable table)
+        {
+            foreach (DataRow dataRow in table.Rows)
+            {
+                foreach (var item in dataRow.ItemArray)
+                {
+                    Console.Write("{0}\n",item);
+                }
+            }
+        }
         public void InsertDatabase()
         {
           //Console.WriteLine("Database connected/Open");
@@ -101,6 +110,7 @@ namespace WebScraper
 
              
         }
+
     }
 
 

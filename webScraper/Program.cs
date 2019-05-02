@@ -15,53 +15,57 @@ namespace WebScraper
     {
         static void Main(string[] arg)
         {
-            try
-            {
-                String webSite = "https://www.yellowpages.com/search?search_terms=bicycles&geo_location_terms=Providence%2C+RI";
-                String xPath = "//a[@class='business-name']";
-                // String[] headers = new string[] { "ID", "Company" };
-                //String[] xPath =new string[2] { "//a[@class='class='phones phone primary']", "//a[@class='business-name']" };
-                //foreach (string query in xPath)
-                //    Console.WriteLine(query);
+            // try
+            // {
+            String webSite = "https://www.yellowpages.com/search?search_terms=bicycles&geo_location_terms=Providence%2C+RI";
+            String xPath = "//a[@class='business-name']";
+            String xPath2 = "//a[@class='phones phone primary']";
+            // String[] headers = new string[] { "ID", "Company" };
+            //String[] xPath =new string[2] { "//a[@class='class='phones phone primary']", "//a[@class='business-name']" };
+            //foreach (string query in xPath)
+            //    Console.WriteLine(query);
 
 
-                // DataBase Column = List <T>
-                ListNode  companyNode= new ListNode(webSite,xPath);
+            // DataBase Column = List <T>
+            // ListNode  companyNode= new ListNode(webSite,xPath);
+            MultiClass bikeShops = new MultiClass(webSite, xPath, xPath2);
 
-                // Scrape WebSite and Return a List<HtmlNode> list.
-                List<HtmlNode> company=companyNode.NodesToList();
+            // Scrape WebSite and Return a List<HtmlNode> list.
+            // List<HtmlNode> company=companyNode.NodesToList();
+            List<HtmlNode> shopPhone = bikeShops.MultiNodesToList();
 
-                // Create a tempDataTable from List var Name
-                DataTable companyList=companyNode.NodesToTable(company);
+            // Create a tempDataTable from List var Name
+            // DataTable companyList=companyNode.NodesToTable(company);
+            // bikeShops.MultiNodesToTable();
 
-                // Write to tempDataTable to Database
-                companyNode.ToDatabase(companyList);
-
-                // Display Database
-                ScrapedDatabase view = new ScrapedDatabase();
-                view.DisplayData();
-
-
-                
+            //View DataTable
+            //companyNode.ViewDataTable(companyList);
+            // bikeShops.ViewDataTable(companyList);
 
 
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
+            // Write to tempDataTable to Database
+            // companyNode.ToDatabase(companyList);
 
-            }       
-            catch (Exception)
-            {
+            // Display Database
+            // ScrapedDatabase view = new ScrapedDatabase();
+            // view.DisplayData();
 
-                Console.WriteLine("Error:\nIn Code\nnetwork problem\nwebsite not working\nXPath error");
-            }
+            bikeShops.ToScreen(shopPhone);
+
+
+
+
+
+
+
+
+
+            //}       
+            //catch (Exception)
+            //{
+
+            //  Console.WriteLine("Error:\nIn Code\nnetwork problem\nwebsite not working\nXPath error");
+            //}
 
         }
     }
