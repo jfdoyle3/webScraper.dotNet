@@ -26,15 +26,13 @@ namespace WebScraper
         public List<HtmlNode> NodesToList()
         {
 
-
             //TODO: HtmlWeb / Document load to the Connection Class
             HtmlWeb web = new HtmlWeb();
             HtmlDocument doc = web.Load(WebSite);
+
             List<HtmlNode> classList = doc.DocumentNode
                                            .SelectNodes(XPath)
                                            .ToList();
-
-           
            
               return classList;
         }
@@ -55,6 +53,18 @@ namespace WebScraper
                 tempTable.Rows.Add(index, className.InnerText);
             }
             return tempTable;
+        }
+        public void GetInnerHtml()
+        {
+
+            HtmlWeb web = new HtmlWeb();
+            HtmlDocument doc = web.Load(WebSite);
+            //HtmlNodeCollection htmlNodes = doc.DocumentNode.SelectNodes(XPath);
+        
+            //foreach (HtmlNode node in htmlNodes)
+            //{
+            //    Console.WriteLine(node.InnerText);
+            //}
         }
     }
 }
