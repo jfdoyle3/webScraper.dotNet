@@ -55,16 +55,15 @@ namespace WebScraper
             return tempTable;
         }
         public void GetInnerHtml()
-        {
-
+        { 
             HtmlWeb web = new HtmlWeb();
             HtmlDocument doc = web.Load(WebSite);
-            //HtmlNodeCollection htmlNodes = doc.DocumentNode.SelectNodes(XPath);
+            HtmlNodeCollection htmlNodes = doc.DocumentNode.SelectNodes(XPath);
         
-            //foreach (HtmlNode node in htmlNodes)
-            //{
-            //    Console.WriteLine(node.InnerText);
-            //}
+            foreach (HtmlNode node in htmlNodes)
+            {
+                Console.WriteLine(node.InnerHtml);
+            }
         }
     }
 }

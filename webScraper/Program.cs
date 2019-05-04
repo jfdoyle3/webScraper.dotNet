@@ -23,12 +23,15 @@ namespace WebScraper
             //String xPath = "//a[@class='business-name']";
             //string xPath = "//div[@class='v-card']";
 
-            //Yahoo Finance
-           // String webSite = "https://finance.yahoo.com/portfolio/p_0/view";
-           // String xPath = "//div[@class='Ovx(s) Ovy(h)']"; // The entire table
+           //Yahoo Finance
+            String webSite = "https://finance.yahoo.com/portfolio/p_0/view";
+            String xPath = "//div[@*]";
 
-            
 
+            //main/div/div/div[2]/div/div[1]
+
+            //Top of fiance Table
+            //String xPath = "//div[@class='Ovx(s) Ovy(h)']"; // The entire table
 
 
 
@@ -41,11 +44,11 @@ namespace WebScraper
 
             // DataBase Column = List <T>
             ListNode scrapeNode = new ListNode(webSite,xPath);
-            //scrapeNode.GetInnerHtml();
+            scrapeNode.GetInnerHtml();
 
 
             // Scrape WebSite and Return a List<HtmlNode> list.
-             List<HtmlNode> nodeList=scrapeNode.NodesToList();
+            // List<HtmlNode> nodeList=scrapeNode.NodesToList();
             // List<HtmlNode> company=companyNode.NodesToList();
             // List<HtmlNode> phone=companyNode.NodesToList();
             
@@ -56,7 +59,7 @@ namespace WebScraper
 
             //View DataTable / To Screen
             //scrapeNode.ViewDataTable(nodeList);
-            scrapeNode.ToScreen(nodeList);
+            //scrapeNode.ToScreen(nodeList);
 
 
 
