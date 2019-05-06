@@ -29,17 +29,17 @@ namespace WebScraper
 
 
             //Yahoo Finance
-            String webSite = "https://finance.yahoo.com/portfolio/p_0/view";
-            //String xPath = "//div[@id='pf-detail-table']";
-
-            //class="Pos(r) "
-
-
-
+           String webSite = "https://finance.yahoo.com/portfolio/p_0/view";
+            // String xPath = "//";
+            
             ////main/div/div/div[2]/div/div[1]
 
             //Top of fiance Table
-            String xPath = "//div[@class='Ovx(s) Ovy(h)']//table"; // The entire table
+            // String xPath="div[@class='']";
+            // String xPath="//div id='pf-detail-table' class='Pos(r) '";
+            // String xPath="//div[@id='pf-detail-table']";
+             String xPath="tr";
+            //String xPath = "//div[@class='Ovx(s) Ovy(h)']"; // The entire table
 
 
 
@@ -53,12 +53,13 @@ namespace WebScraper
 
 
             // DataBase Column = List <T>
-            ListNode scrapeNode = new ListNode(webSite, xPath);
-            scrapeNode.GetChildNodes();
-
+             ListNode scrapeNode = new ListNode(webSite, xPath);
+            //scrapeNode.GetChildNodes();
+            //scrapeNode.GetInnerHtml();
+              scrapeNode.GetInnerText();
 
             // Scrape WebSite and Return a List<HtmlNode> list.
-
+            //List<HtmlNode> nodeList = scrapeNode.NodesToList();
             // List<HtmlNode> company=companyNode.NodesToList();
             // List<HtmlNode> phone=companyNode.NodesToList();
 
@@ -67,10 +68,10 @@ namespace WebScraper
             //DataTable nodeDataList=companyNode.NodesToTable(scrapeNode);
 
 
-            //View DataTable / To Screen
+            //View DataTable / To Screen /To File
             //scrapeNode.ViewDataTable(nodeList);
-
-
+             // scrapeNode.ToScreen(nodeList);
+            //scrapeNode.ToFile(nodeList);
 
 
             // Write to tempDataTable to Database

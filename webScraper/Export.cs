@@ -45,7 +45,7 @@ namespace WebScraper
         {
 
             String file = Folder + FileName;
-            StreamWriter streamWriter = new StreamWriter(file, true); //'True' appends to file.
+            StreamWriter streamWriter = new StreamWriter(file); //'True' appends to file.
             for (int index = 0; index < value.Count; index++) // foreach change
             {
                 HtmlNode className = value[index];
