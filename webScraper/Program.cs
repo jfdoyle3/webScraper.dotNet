@@ -18,20 +18,28 @@ namespace WebScraper
             // try
             // {
 
-            // Yellow Pages
+            // Yellow Pages - Working/Test
             //String webSite = "https://www.yellowpages.com/search?search_terms=bicycles&geo_location_terms=Providence%2C+RI";
             //String xPath = "//a[@class='business-name']";
             //string xPath = "//div[@class='v-card']";
+            //ListNode scrapeNode = new ListNode(webSite, xPath);
+            //List<HtmlNode> nodeList = scrapeNode.NodesToList();
+            //scrapeNode.ToScreen(nodeList);
 
-           //Yahoo Finance
+
+
+            //Yahoo Finance
             String webSite = "https://finance.yahoo.com/portfolio/p_0/view";
-            String xPath = "//div[@*]";
+            //String xPath = "//div[@id='pf-detail-table']";
+
+            //class="Pos(r) "
 
 
-            //main/div/div/div[2]/div/div[1]
+
+            ////main/div/div/div[2]/div/div[1]
 
             //Top of fiance Table
-            //String xPath = "//div[@class='Ovx(s) Ovy(h)']"; // The entire table
+            String xPath = "//div[@class='Ovx(s) Ovy(h)']//table"; // The entire table
 
 
 
@@ -42,24 +50,26 @@ namespace WebScraper
             //    Console.WriteLine(query);
             // string xPath1 = xPath[0];
 
+
+
             // DataBase Column = List <T>
-            ListNode scrapeNode = new ListNode(webSite,xPath);
-            scrapeNode.GetInnerHtml();
+            ListNode scrapeNode = new ListNode(webSite, xPath);
+            scrapeNode.GetChildNodes();
 
 
             // Scrape WebSite and Return a List<HtmlNode> list.
-            // List<HtmlNode> nodeList=scrapeNode.NodesToList();
+
             // List<HtmlNode> company=companyNode.NodesToList();
             // List<HtmlNode> phone=companyNode.NodesToList();
-            
+
 
             // Create a tempDataTable from List var Name
-             //DataTable nodeDataList=companyNode.NodesToTable(scrapeNode);
+            //DataTable nodeDataList=companyNode.NodesToTable(scrapeNode);
 
 
             //View DataTable / To Screen
             //scrapeNode.ViewDataTable(nodeList);
-            //scrapeNode.ToScreen(nodeList);
+
 
 
 
