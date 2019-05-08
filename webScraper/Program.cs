@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
+using Selenium;
 
 
 namespace WebScraper
@@ -29,16 +30,16 @@ namespace WebScraper
 
 
             //Yahoo Finance
-           String webSite = "https://finance.yahoo.com/portfolio/p_0/view";
+            //String webSite = "https://finance.yahoo.com/portfolio/p_0/view";
             // String xPath = "//";
-            
+
             ////main/div/div/div[2]/div/div[1]
 
             //Top of fiance Table
             // String xPath="div[@class='']";
             // String xPath="//div id='pf-detail-table' class='Pos(r) '";
             // String xPath="//div[@id='pf-detail-table']";
-             String xPath="tr";
+            // String xPath="tr";
             //String xPath = "//div[@class='Ovx(s) Ovy(h)']"; // The entire table
 
 
@@ -50,13 +51,15 @@ namespace WebScraper
             //    Console.WriteLine(query);
             // string xPath1 = xPath[0];
 
-
+            // Selenium
+            Selenium.Selenium execute = new Selenium.Selenium();
+            execute.RunSelenium();
 
             // DataBase Column = List <T>
-             ListNode scrapeNode = new ListNode(webSite, xPath);
+            // ListNode scrapeNode = new ListNode(webSite, xPath);
             //scrapeNode.GetChildNodes();
             //scrapeNode.GetInnerHtml();
-              scrapeNode.GetInnerText();
+            //  scrapeNode.GetInnerText();
 
             // Scrape WebSite and Return a List<HtmlNode> list.
             //List<HtmlNode> nodeList = scrapeNode.NodesToList();
