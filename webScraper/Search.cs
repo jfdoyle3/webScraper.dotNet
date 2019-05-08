@@ -43,8 +43,6 @@ namespace WebScraper
            Console.WriteLine("Regex pattern: {0}", search);
 
            // return extractedText;
-
-
         }
 
     }
