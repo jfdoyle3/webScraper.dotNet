@@ -52,8 +52,16 @@ namespace WebScraper
             // string xPath1 = xPath[0];
 
             // Selenium
-            Selenium.Selenium execute = new Selenium.Selenium();
-            execute.RunSelenium();
+            //Selenium.Selenium execute = new Selenium.Selenium();
+            //execute.RunSelenium();
+            //execute.AltRunSelenium();
+
+           // Selenium.NUnitTest test = new NUnitTest();
+            
+
+
+
+
 
             // DataBase Column = List <T>
             // ListNode scrapeNode = new ListNode(webSite, xPath);
