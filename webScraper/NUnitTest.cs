@@ -9,25 +9,24 @@ namespace Selenium
 {
     class NUnitTest
     {
-       IWebDriver driver;
+        IWebDriver driver;
 
-       [SetUp]
-       public void Initialize()
-       {
+        [SetUp]
+        public void Itialize()
+        {
             driver = new ChromeDriver();
-       }
-       
-       [Test]
-       public void OpenAppTest()
-       {
-            driver.Url = "http://www.demoqa.com";
-       }
+        }
 
-       [TearDown]
-       public void EndTest()
-       {
+        [Test]
+        public void OpenAppTest()
+        {
+            driver.Url = "http://www.demosqa.com";
+        }
+
+        [TearDown]
+        public void EndTest()
+        {
             driver.Close();
-       }
-            
+        }
     }
 }

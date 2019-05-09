@@ -8,13 +8,12 @@ using System.Threading.Tasks;
 using HtmlAgilityPack;
 using Selenium;
 
-
 namespace WebScraper
 {
     
     class Program
     {
-        static void Main(string[] arg)
+        static public void Main(string[] arg)
         {
             // try
             // {
@@ -30,10 +29,9 @@ namespace WebScraper
 
 
             //Yahoo Finance
-            //String webSite = "https://finance.yahoo.com/portfolio/p_0/view";
+            // String webSite = "https://finance.yahoo.com/portfolio/p_0/view";
             // String xPath = "//";
 
-            ////main/div/div/div[2]/div/div[1]
 
             //Top of fiance Table
             // String xPath="div[@class='']";
@@ -52,12 +50,12 @@ namespace WebScraper
             // string xPath1 = xPath[0];
 
             // Selenium
-            //Selenium.Selenium execute = new Selenium.Selenium();
-            //execute.RunSelenium();
+            Selenium.Selenium execute = new Selenium.Selenium();
+            execute.RunSelenium();
             //execute.AltRunSelenium();
 
-           // Selenium.NUnitTest test = new NUnitTest();
-            
+            // Selenium.NUnitTest test = new NUnitTest();
+
 
 
 
@@ -81,7 +79,7 @@ namespace WebScraper
 
             //View DataTable / To Screen /To File
             //scrapeNode.ViewDataTable(nodeList);
-             // scrapeNode.ToScreen(nodeList);
+            // scrapeNode.ToScreen(nodeList);
             //scrapeNode.ToFile(nodeList);
 
 
@@ -109,7 +107,7 @@ namespace WebScraper
 
             //  Console.WriteLine("Error:\nIn Code\nnetwork problem\nwebsite not working\nXPath error");
             //}
-
+        
         }
     }
 }

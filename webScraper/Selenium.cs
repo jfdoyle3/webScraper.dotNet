@@ -12,8 +12,8 @@ namespace Selenium
         {
             IWebDriver driver = new ChromeDriver();
             driver.Navigate().GoToUrl("http://www.google.com");
-            driver.FindElement(By.Name("q")).SendKeys("Resistance is Futile!!");
-            driver.Quit();
+            driver.FindElement(By.Name("q")).SendKeys("CareerDevs\n");
+            // driver.Quit();
         }
         public void AltRunSelenium()
         {
