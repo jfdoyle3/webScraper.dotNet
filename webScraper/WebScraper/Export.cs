@@ -65,7 +65,8 @@ namespace WebScraper
 
             // Amuzement
             //string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\repository\webScraper\dotNET\webScraper.dotNet\webScraper\ScrapeDB.mdf; Integrated Security = True";
-     
+            // TODO: Write tsble headers to database table
+            
             SqlConnection dbConnect = new SqlConnection(connectionString);
             dbConnect.Open();
 
@@ -87,6 +88,12 @@ namespace WebScraper
                 {
                     Console.Write("{0}\n",item);
                 }
+            }
+            foreach (DataColumn column in table.Columns)
+            {
+                Console.Write(column.ColumnName);
+                Console.Write(" ");
+             
             }
         }
         public void InsertDatabase()
