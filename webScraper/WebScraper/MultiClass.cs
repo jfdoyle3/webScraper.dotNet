@@ -36,16 +36,17 @@ namespace WebScraper
             for (int xPathIndex = 0; xPathIndex < XPath.Length; xPathIndex++)
             {
                   
-                    tempTable.Columns.Add(Headers[xPathIndex]);
+                 tempTable.Columns.Add(Headers[xPathIndex]);    
               
                 List<HtmlNode> classList = doc.DocumentNode
-                                                 .SelectNodes(XPath[xPathIndex])
-                                                 .ToList();
+                                              .SelectNodes(XPath[xPathIndex])
+                                              .ToList();
                 
                 //  Add in Scraped Data to Temp Table
 
                 foreach (HtmlNode nodes in classList)
                 {
+                   
                     tempTable.Rows.Add(nodes.InnerText);
                 }
             }

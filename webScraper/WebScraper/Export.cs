@@ -82,18 +82,13 @@ namespace WebScraper
         }
         public void ViewDataTable (DataTable table)
         {
-            foreach (DataRow dataRow in table.Rows)
+            foreach(DataRow row in table.Rows)
             {
-                foreach (var item in dataRow.ItemArray)
+                Console.WriteLine();
+                foreach (var item in row.ItemArray)
                 {
-                    Console.Write("{0}\n",item);
+                    Console.WriteLine(item);
                 }
-            }
-            foreach (DataColumn column in table.Columns)
-            {
-                Console.Write(column.ColumnName);
-                Console.Write(" ");
-             
             }
         }
         public void InsertDatabase()
@@ -119,7 +114,12 @@ namespace WebScraper
              
         }
 
+
+  
+        
     }
+
+}
 
 
     //Copy the DataTable to SQL Server
@@ -133,5 +133,4 @@ namespace WebScraper
     //                    s.ColumnMappings.Add(column.ToString(), column.ToString());
     //                s.WriteToServer(dailySalesStats);
     //            }
-}               
-            
+               
