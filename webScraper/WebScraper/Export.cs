@@ -65,7 +65,8 @@ namespace WebScraper
 
             // Amuzement
             //string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\repository\webScraper\dotNET\webScraper.dotNet\webScraper\ScrapeDB.mdf; Integrated Security = True";
-     
+            // TODO: Write tsble headers to database table
+            
             SqlConnection dbConnect = new SqlConnection(connectionString);
             dbConnect.Open();
 
@@ -81,11 +82,12 @@ namespace WebScraper
         }
         public void ViewDataTable (DataTable table)
         {
-            foreach (DataRow dataRow in table.Rows)
+            foreach(DataRow row in table.Rows)
             {
-                foreach (var item in dataRow.ItemArray)
+                Console.WriteLine();
+                foreach (var item in row.ItemArray)
                 {
-                    Console.Write("{0}\n",item);
+                    Console.WriteLine(item);
                 }
             }
         }
@@ -112,7 +114,12 @@ namespace WebScraper
              
         }
 
+
+  
+        
     }
+
+}
 
 
     //Copy the DataTable to SQL Server
@@ -126,5 +133,4 @@ namespace WebScraper
     //                    s.ColumnMappings.Add(column.ToString(), column.ToString());
     //                s.WriteToServer(dailySalesStats);
     //            }
-}               
-            
+               
