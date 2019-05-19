@@ -19,10 +19,11 @@ namespace Selenium
                 // Two ways to GET a URL
                  // driver.Navigate().GoToUrl("https://www.yellowpages.com/search?search_terms=bicycles&geo_location_terms=Providence%2C+RI");
                  driver.Url = "https://www.yellowpages.com/search?search_terms=bicycles&geo_location_terms=Providence%2C+RI";
-                 IList<IWebElement> businessNames = driver.FindElements(By.ClassName("business-name"));
+                // IList<IWebElement> businessNames = driver.FindElements(By.ClassName("business-name"));
+                 IList<IWebElement> businessNames = driver.FindElements(By.XPath("//a[@class='business-name']"));
 
                 foreach (IWebElement names in businessNames)
-                    Console.WriteLine(names.Text);    
+                    Console.WriteLine(names.Text);
             }     
         }
     }

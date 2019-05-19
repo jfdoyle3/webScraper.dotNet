@@ -17,9 +17,8 @@ namespace WebScraper
         {
 
             //  SeleniumTest.Testing123();
-            Yellow.BikeYellow();
-            // try
-            // {
+            YahooFinance.Login("jfdoyle_iii","Wa49sDwq");
+           // Yellow.BikeYellow(); 
 
             // Yellow Pages - Working/Test
             //String webSite = "https://www.yellowpages.com/search?search_terms=bicycles&geo_location_terms=Providence%2C+RI";
@@ -55,19 +54,14 @@ namespace WebScraper
             //scrape.ViewDataTable(table);
             //scrape.ToDatabase(table);
 
-            var t = new TablePrinter("id", "Column A", "Column B","Column C","Column ABC");
-            t.AddRow(1, "Val A1", "Val B1","Val C1","Val 123");
-            t.AddRow(2, "Val A2", "Val B2","Val C2","Val 456");
-            t.AddRow(100, "Val A100", "Val B100","Val C100","Val 888");
-            t.Print();
+            //TablePrinter t = new TablePrinter("id", "Column A", "Column B","Column C","Column ABC");
+            //t.AddRow(1, "Val A1", "Val B1","Val C1","Val 123");
+            //t.AddRow(2, "Val A2", "Val B2","Val C2","Val 456");
+            //t.AddRow(100, "Val A100", "Val B100","Val C100","Val 888");
+            //t.Print();
 
 
-            //}       
-            //catch (Exception)
-            //{
-
-            //  Console.WriteLine("Error:\nIn Code\nnetwork problem\nwebsite not working\nXPath error");
-            //}
+           
 
         }
     }

@@ -20,7 +20,7 @@ namespace WebScraper
         {
             if (row.Length != titles.Length)
             {
-                throw new System.Exception($"Added row length [{row.Length}] is not equal to title row length [{titles.Length}]");
+                throw new Exception($"Added row length [{row.Length}] is not equal to title row length [{titles.Length}]");
             }
             rows.Add(row.Select(o => o.ToString()).ToArray());
             for (int i = 0; i < titles.Length; i++)
@@ -34,18 +34,18 @@ namespace WebScraper
 
         public void Print()
         {
-            lengths.ForEach(l => System.Console.Write("+-" + new string('-', l) + '-'));
-            System.Console.WriteLine("+");
+            lengths.ForEach(l => Console.Write("+-" + new string('-', l) + '-'));
+            Console.WriteLine("+");
 
             string line = "";
             for (int i = 0; i < titles.Length; i++)
             {
                 line += "| " + titles[i].PadRight(lengths[i]) + ' ';
             }
-            System.Console.WriteLine(line + "|");
+            Console.WriteLine(line + "|");
 
-            lengths.ForEach(l => System.Console.Write("+-" + new string('-', l) + '-'));
-            System.Console.WriteLine("+");
+            lengths.ForEach(l => Console.Write("+-" + new string('-', l) + '-'));
+            Console.WriteLine("+");
 
             foreach (var row in rows)
             {
@@ -61,11 +61,11 @@ namespace WebScraper
                         line += "| " + row[i].PadRight(lengths[i]) + ' ';
                     }
                 }
-                System.Console.WriteLine(line + "|");
+                Console.WriteLine(line + "|");
             }
 
-            lengths.ForEach(l => System.Console.Write("+-" + new string('-', l) + '-'));
-            System.Console.WriteLine("+");
+            lengths.ForEach(l => Console.Write("+-" + new string('-', l) + '-'));
+            Console.WriteLine("+");
         }
     }
 }
