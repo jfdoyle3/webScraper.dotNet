@@ -31,7 +31,7 @@ namespace WebScraper
 
 
             //Yahoo Finance
-            //String webSite = "https://finance.yahoo.com/portfolio/p_0/view";
+           // String webSite = "https://finance.yahoo.com/portfolio/p_0/view";
             // String xPath = "//";
 
 
@@ -42,6 +42,9 @@ namespace WebScraper
             //String xPath= "//td[@aria-label='Change']";
             //String xPath = "//div[@class='Ovx(s) Ovy(h)']"; // The entire table
             //String xPath = "//div[@class='Ovx(a)']";
+            //ListNode stocks = new ListNode(webSite, xPath);
+            
+            //stocks.ToScreen(stockList);
 
 
             //String[] xPath = new "//a[@class='phones phone primary']";

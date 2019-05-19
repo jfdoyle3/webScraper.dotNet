@@ -13,7 +13,7 @@ namespace Selenium
     {
 
 
-        // <a id = "uh-signedin" class="Bdrs(5px) Bds(s) Bdw(2px) C(#fff):h D(ib) Ell Fz(14px) Fw(b) Py(2px) Mt(3px) Ta(c) Td(n):h Miw(78px) H(18px) Bdc(signInBtn) Bgc(signInBtn):h C(signInBtn)" href="https://login.yahoo.com/config/login?.intl=us&amp;.lang=en-US&amp;.src=finance&amp;.done=https%3A%2F%2Ffinance.yahoo.com%2F">Sign in</a>
+        
         public static void Login(string email, string password)
         {
             using (IWebDriver driver = new ChromeDriver())
@@ -41,17 +41,19 @@ namespace Selenium
                 pwBox.SendKeys(password);
                 pwBox.SendKeys(Keys.Enter);
 
-                WebDriverWait waitPort = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-                waitPort.Until(ExpectedConditions.ElementToBeClickable(By.LinkText("My Portfolio")));
+                //WebDriverWait waitPort = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+                //waitPort.Until(ExpectedConditions.ElementToBeClickable(By.LinkText("My Portfolio")));
 
-                IWebElement portfolio = driver.FindElement(By.LinkText("My Portfolio"));
-                portfolio.Click();
+                //IWebElement portfolio = driver.FindElement(By.LinkText("My Portfolio"));
+                //portfolio.Click();
 
-                WebDriverWait waitStockList = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
-                waitStockList.Until(ExpectedConditions.ElementToBeClickable(By.LinkText("Stocks")));
+                //WebDriverWait waitStockList = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
+                //waitStockList.Until(ExpectedConditions.ElementToBeClickable(By.LinkText("Stocks")));
+                //waitStockList.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//a[@href='/portfolio/p_2/view']")));
 
-                IWebElement stocks = driver.FindElement(By.LinkText("Stocks"));
-                stocks.Click();
+                //IWebElement stocks = driver.FindElement(By.LinkText("Stocks"));
+                //IWebElement stocks = driver.FindElement(By.XPath("//a[@href='/portfolio/p_2/view']"));
+                //stocks.Click();
 
             }
         }
