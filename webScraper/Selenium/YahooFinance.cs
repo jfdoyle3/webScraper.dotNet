@@ -2,19 +2,13 @@
 using System.Collections.Generic;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-
-// Enable Wait line/method
-// Other Methods may need this
 using OpenQA.Selenium.Support.UI;
 
 namespace Selenium
 {
     public class YahooFinance
     {
-
-
-        
-        public static void Login(string email, string password)
+        public dynamic Login(string email, string password)
         {
             using (IWebDriver driver = new ChromeDriver())
             {
@@ -29,23 +23,23 @@ namespace Selenium
                 WebDriverWait waitLogin = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
                 waitLogin.Until(ExpectedConditions.ElementToBeClickable(By.Id("login-username")));
 
-                IWebElement loginBox = driver.FindElement(By.Id("login-username"));
-                loginBox.SendKeys(email);
-                loginBox.SendKeys(Keys.Enter);
+                IWebElement LoginField = driver.FindElement(By.Id("login-username"));
+                LoginField.SendKeys(email);
+                LoginField.SendKeys(Keys.Enter);
 
-                WebDriverWait waitPw = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-                waitPw.Until(ExpectedConditions.ElementToBeClickable(By.Id("login-passwd")));
+                WebDriverWait waitPassword= new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+                waitPassword.Until(ExpectedConditions.ElementToBeClickable(By.Id("login-passwd")));
 
 
-                IWebElement pwBox = driver.FindElement(By.Id("login-passwd"));
-                pwBox.SendKeys(password);
-                pwBox.SendKeys(Keys.Enter);
+                IWebElement passwordField = driver.FindElement(By.Id("login-passwd"));
+                passwordField.SendKeys(password);
+                passwordField.SendKeys(Keys.Enter);
 
-                //WebDriverWait waitPort = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-                //waitPort.Until(ExpectedConditions.ElementToBeClickable(By.LinkText("My Portfolio")));
+                WebDriverWait waitPort = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+                waitPort.Until(ExpectedConditions.ElementToBeClickable(By.LinkText("My Portfolio")));
 
-                //IWebElement portfolio = driver.FindElement(By.LinkText("My Portfolio"));
-                //portfolio.Click();
+                IWebElement portfolio = driver.FindElement(By.LinkText("My Portfolio"));
+                portfolio.Click();
 
                 //WebDriverWait waitStockList = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
                 //waitStockList.Until(ExpectedConditions.ElementToBeClickable(By.LinkText("Stocks")));
@@ -55,6 +49,8 @@ namespace Selenium
                 //IWebElement stocks = driver.FindElement(By.XPath("//a[@href='/portfolio/p_2/view']"));
                 //stocks.Click();
 
+                string currentURL = driver.Url;
+                return currentURL;
             }
         }
         //public static void WaitForIt(string id)

@@ -17,7 +17,9 @@ namespace WebScraper
         {
 
             //  SeleniumTest.Testing123();
-            YahooFinance.Login("jfdoyle_iii","Wa49sDwq");
+            YahooFinance yf = new YahooFinance();
+            dynamic url= yf.Login("jfdoyle_iii","Wa49sDwq");
+            Console.WriteLine(url);
            // Yellow.BikeYellow(); 
 
             // Yellow Pages - Working/Test
@@ -32,7 +34,7 @@ namespace WebScraper
 
             //Yahoo Finance
            // String webSite = "https://finance.yahoo.com/portfolio/p_0/view";
-            // String xPath = "//";
+           //  String xPath = "//";
 
 
             //Top of fiance Table
@@ -42,8 +44,8 @@ namespace WebScraper
             //String xPath= "//td[@aria-label='Change']";
             //String xPath = "//div[@class='Ovx(s) Ovy(h)']"; // The entire table
             //String xPath = "//div[@class='Ovx(a)']";
-            //ListNode stocks = new ListNode(webSite, xPath);
-            
+            //ListNode stocks = new ListNode(url, xPath);
+            //stocks.GetInnerHtml();
             //stocks.ToScreen(stockList);
 
 
