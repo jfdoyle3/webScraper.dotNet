@@ -21,7 +21,7 @@ namespace WebScraper
             dynamic url= yf.Login("jfdoyle_iii", "m93Fe8YHn");
             Console.WriteLine(url);
 
-           // yallow pages
+           // yellow pages
            // Yellow.BikeYellow(); 
 
             // Yellow Pages - Working/Test
@@ -43,9 +43,11 @@ namespace WebScraper
             // String xPath="div[@class='']";
             // String xPath="//div id='pf-detail-table' class='Pos(r) '";
             // String xPath="//div[@id='pf-detail-table']";
-            //String xPath= "//td[@aria-label='Change']";
+           
             //String xPath = "//div[@class='Ovx(s) Ovy(h)']"; // The entire table
-            //String xPath = "//div[@class='Ovx(a)']";
+            //String xPath = "//div[@class='Ovx(a)']"; 
+             // label in table
+            //String xPath= "//td[@aria-label='Change']";
             //ListNode stocks = new ListNode(url, xPath);
             //stocks.GetInnerHtml();
             //stocks.ToScreen(stockList);
