@@ -18,7 +18,7 @@ namespace WebScraper
 
             //  SeleniumTest.Testing123();
             YahooFinance yf = new YahooFinance();
-            dynamic url= yf.Login("jfdoyle_iii","Wa49sDwq");
+            dynamic url= yf.Login("jfdoyle_iii", "m93Fe8YHn");
             Console.WriteLine(url);
            // Yellow.BikeYellow(); 
 
