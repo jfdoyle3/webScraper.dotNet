@@ -16,62 +16,28 @@ namespace WebScraper
         static public void Main(string[] arg)
         {
 
-            //  SeleniumTest.Testing123();
+            
             YahooFinance yf = new YahooFinance();
             dynamic url= yf.Login("jfdoyle_iii", "m93Fe8YHn");
             Console.WriteLine(url);
 
-           // yellow pages
-           // Yellow.BikeYellow(); 
+            //String xPath = "//*[@id='pf-detail-table']/div[1]/table/tbody/tr[1]/td[2]/span";
 
-            // Yellow Pages - Working/Test
-            //String webSite = "https://www.yellowpages.com/search?search_terms=bicycles&geo_location_terms=Providence%2C+RI";
-            // String xPath = "//a[@class='business-name']";
-            //string xPath = "//div[@class='v-card']";
-            // ListNode scrapeNode = new ListNode(webSite, xPath);
-            // List<HtmlNode> nodeList = scrapeNode.NodesToList();
-            // scrapeNode.ToScreen(nodeList);
+            HtmlWeb web = new HtmlWeb();
+            HtmlDocument doc = web.Load(url);
 
+            //String lastPrice = doc.DocumentNode.SelectSingleNode(xPath).InnerText;
+            //Console.WriteLine(lastPrice);
 
+            var tablerows = doc.DocumentNode.SelectNodes("//*[@id='pf- detail-table']/div[1]/table/tbody/tr[1]");
 
-            //Yahoo Finance
-           // String webSite = "https://finance.yahoo.com/portfolio/p_0/view";
-           //  String xPath = "//";
+            foreach (HtmlNode row in tablerows)
+            {
+                var cells = row.SelectNodes(".//td");
 
-
-            //Top of fiance Table
-            // String xPath="div[@class='']";
-            // String xPath="//div id='pf-detail-table' class='Pos(r) '";
-            // String xPath="//div[@id='pf-detail-table']";
-           
-            //String xPath = "//div[@class='Ovx(s) Ovy(h)']"; // The entire table
-            //String xPath = "//div[@class='Ovx(a)']"; 
-             // label in table
-            //String xPath= "//td[@aria-label='Change']";
-            //ListNode stocks = new ListNode(url, xPath);
-            //stocks.GetInnerHtml();
-            //stocks.ToScreen(stockList);
-
-
-            //String[] xPath = new "//a[@class='phones phone primary']";
-            // String[] headers = new string[2] { "Company", "Phone"};
-            //String[] xPath =new string[2] { "//a[@class='business-name']", "//a[@class='phones phone primary']" };
-            // String[] headers = new string[2] { "Company","Phone" };
-            //String[] xPath = new string[2] { "//a[@class='business-name']","//div[@class='phones phone primary']"};
-            // var scrape = new MultiClass(webSite,xPath,headers);
-            // var table = scrape.MultiNodestoTable();
-            //scrape.ViewDataTable(table);
-            //scrape.ToDatabase(table);
-
-            //TablePrinter t = new TablePrinter("id", "Column A", "Column B","Column C","Column ABC");
-            //t.AddRow(1, "Val A1", "Val B1","Val C1","Val 123");
-            //t.AddRow(2, "Val A2", "Val B2","Val C2","Val 456");
-            //t.AddRow(100, "Val A100", "Val B100","Val C100","Val 888");
-            //t.Print();
-
-
-           
-
+                Console.WriteLine(cells[0].InnerText);
+            }
+               
+            }
         }
-    }
 }

@@ -35,20 +35,7 @@ namespace Selenium
                 passwordField.SendKeys(password);
                 passwordField.SendKeys(Keys.Enter);
 
-                WebDriverWait waitPort = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-                waitPort.Until(ExpectedConditions.ElementToBeClickable(By.LinkText("My Portfolio")));
-
-                IWebElement portfolio = driver.FindElement(By.LinkText("My Portfolio"));
-                portfolio.Click();
-
-                //WebDriverWait waitStockList = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
-                //waitStockList.Until(ExpectedConditions.ElementToBeClickable(By.LinkText("Stocks")));
-                //waitStockList.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//a[@href='/portfolio/p_2/view']")));
-
-                //IWebElement stocks = driver.FindElement(By.LinkText("Stocks"));
-                //IWebElement stocks = driver.FindElement(By.XPath("//a[@href='/portfolio/p_2/view']"));
-                //stocks.Click();
-
+                driver.Url = "https://finance.yahoo.com/portfolio/p_2/view/v1";
                 string currentURL = driver.Url;
                 return currentURL;
             }
