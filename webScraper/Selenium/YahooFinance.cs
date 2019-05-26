@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
+using HtmlAgilityPack;
 
 namespace Selenium
 {
     public class YahooFinance
     {
-        public dynamic Login(string email, string password)
+       public dynamic Login(string email, string password)
         {
             using (IWebDriver driver = new ChromeDriver())
             {
@@ -36,6 +37,7 @@ namespace Selenium
                 passwordField.SendKeys(Keys.Enter);
 
                 driver.Url = "https://finance.yahoo.com/portfolio/p_2/view/v1";
+
                 string currentURL = driver.Url;
                 return currentURL;
             }
