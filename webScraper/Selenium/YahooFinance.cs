@@ -9,7 +9,7 @@ namespace Selenium
 {
     public class YahooFinance
     {
-       public dynamic Login(string email, string password)
+       public string Login(string email, string password)
         {
             using (IWebDriver driver = new ChromeDriver())
             {

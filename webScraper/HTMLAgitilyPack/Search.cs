@@ -11,7 +11,7 @@ namespace WebScraper
     {
         private String WebSite { get;  set; }
         private String XPath { get;  set; }
-        private String RegexPattern { get; set; }
+        private String RegexPattern { get; }
 
         
         private readonly List<string> extractedText = new List<string>();
