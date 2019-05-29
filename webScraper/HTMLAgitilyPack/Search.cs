@@ -6,6 +6,8 @@ using HtmlAgilityPack;
 
 namespace WebScraper
 {
+    // Regex for 3 character Upper - Symbol
+   // /(.*[A-Z]){3}/i
     public class Search : Export
 
     {

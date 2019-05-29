@@ -4,12 +4,14 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using HtmlAgilityPack;
+using System.IO;
+using System.Linq;
 
 namespace Selenium
 {
     public class YahooFinance
     {
-       public string Login(string email, string password)
+       public dynamic Login(string email, string password)
         {
             using (IWebDriver driver = new ChromeDriver())
             {
@@ -36,10 +38,23 @@ namespace Selenium
                 passwordField.SendKeys(password);
                 passwordField.SendKeys(Keys.Enter);
 
-                driver.Url = "https://finance.yahoo.com/portfolio/p_2/view/v1";
+                
+                driver.Navigate().GoToUrl("https://finance.yahoo.com/portfolio/p_2/view/v1");
+ 
+                HtmlDocument stocks = new HtmlDocument();
+                stocks.LoadHtml(driver.PageSource);
 
-                string currentURL = driver.Url;
-                return currentURL;
+                List<HtmlNode> classList = stocks.DocumentNode
+                                                .SelectNodes("//tr")
+                                                .ToList();
+                                               
+                // Testing returns table
+                //foreach(HtmlNode node in classList)
+                //{
+
+                //    Console.WriteLine(node.InnerText.ToString());
+                //}
+                return classList;
             }
         }
         //public static void WaitForIt(string id)

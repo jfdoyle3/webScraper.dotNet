@@ -15,26 +15,22 @@ namespace WebScraper
     {
         static public void Main(string[] arg)
         {
-            // YahooFinance yf = new YahooFinance();
-            // string url=yf.Login("username", "password");
-            // Console.WriteLine(url);
+            YahooFinance yf = new YahooFinance();
+            dynamic stockList = yf.Login("jfdoyle_iii", "m93Fe8YHn");
+
+            Console.WriteLine(stockList[1].InnerText);
+            
+            //for (int index = 1; index < stockList.Count; index++)
+            //{
+            //    Console.WriteLine(stockList[index].InnerText);
+            //}
+            //foreach (HtmlNode node in stockList)
+            //{
+
+            //    Console.WriteLine(node.InnerText.ToString());
+            //}
 
 
-
-            string stocks = File.ReadAllText(@"C:\website\Stocks.htm");
-            HtmlDocument htmlDoc = new HtmlDocument();
-
-            htmlDoc.LoadHtml(stocks);
-
-            HtmlNode classList = htmlDoc.DocumentNode.SelectSingleNode("//tr");
-                                           
-                                           
-
-            Console.WriteLine(classList.InnerText);
-           // foreach (HtmlNode node in classList)
-          //  {
-           //     Console.WriteLine(node.InnerText);
-          //  }
         }
     }
 }

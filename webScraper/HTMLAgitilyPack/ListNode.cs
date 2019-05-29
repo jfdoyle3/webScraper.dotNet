@@ -5,10 +5,13 @@ using System.Text;
 using System.Data;
 using System.Data.SqlClient;
 using HtmlAgilityPack;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium;
+using Selenium;
 
 namespace WebScraper
 {
-    public class ListNode : Export
+    public class ListNode : YahooFinance
     {
         private String WebSite { get; set; }
         private String XPath { get; set; }
@@ -23,18 +26,28 @@ namespace WebScraper
         }
 
 
-        public List<HtmlNode> NodesToList()
+        public static void NodesToList()
         {
+            using (IWebDriver driver = new ChromeDriver())
+            {
+                driver.Navigate().GoToUrl("https://finance.yahoo.com/portfolio/p_2/view/v1");
+                HtmlDocument stocks = new HtmlDocument();
+                stocks.LoadHtml(driver.PageSource);
+                //TODO: HtmlWeb / Document load to the Connection Class
+                HtmlDocument stockPage = new HtmlDocument();
+                stockPage.LoadHtml(driver.PageSource);
 
-            //TODO: HtmlWeb / Document load to the Connection Class
-            HtmlWeb web = new HtmlWeb();
-            HtmlDocument doc = web.Load(WebSite);
+                List<HtmlNode> classList = stockPage.DocumentNode
+                                               .SelectNodes("//table")
+                                               .ToList();
 
-            List<HtmlNode> classList = doc.DocumentNode
-                                           .SelectNodes(XPath)
-                                           .ToList();
-           
-              return classList;
+                for (int index = 0; index < classList.Count; index++)
+                {
+                    HtmlNode className = classList[index];
+                    Console.WriteLine("{0}", className.InnerText);
+                }
+            }
+                //return classList;
         }
         public dynamic NodesToTable(String[] Headers , List<HtmlNode> classList)
         {
