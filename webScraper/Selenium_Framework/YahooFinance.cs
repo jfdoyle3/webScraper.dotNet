@@ -10,7 +10,7 @@ using WebScraper;
 
 namespace Selenium
 {
-    public class YahooFinance
+    public class YahooFinance : ListNode
     {
 
        public List<HtmlNode> Login()

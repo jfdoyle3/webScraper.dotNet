@@ -19,7 +19,7 @@ namespace WebScraper
 
 
             // HAL9000
-            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\repository\webScraper\dotNET\webScraper.dotNet\webScraper\ScrapeDB.mdf;Integrated Security=True";
+            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\repository\webScraper\dotNET\webScraper.dotNet\webScraper\ScrapedData.mdf;Integrated Security=True";
 
             // Amuzement
             //string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\repository\webScraper\dotNET\webScraper.dotNet\webScraper\ScrapeDB.mdf; Integrated Security = True";
@@ -33,7 +33,7 @@ namespace WebScraper
         SqlCommand viewTable;
         SqlDataReader dataReader;
         String sql, Output = "";
-        sql = "Select ID,Company from YellowPages";
+        sql = "Select ID,Symbol from StockTable";
             viewTable = new SqlCommand(sql, cnn);
         dataReader = viewTable.ExecuteReader();
             // TODO:  Have to alter code to accept dynamic values: fixed 2 variable current

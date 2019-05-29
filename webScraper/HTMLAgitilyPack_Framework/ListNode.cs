@@ -11,7 +11,7 @@ using Selenium;
 
 namespace WebScraper
 {
-    public class ListNode
+    public class ListNode : Export
     {
 
 
@@ -42,15 +42,15 @@ namespace WebScraper
             }
                 //return classList;
         }
-        public dynamic NodesToTable(String[] Headers , List<HtmlNode> classList)
+        public dynamic NodesToTable( List<HtmlNode> classList)
         {
-           // String[] headers = new string[] { "ID", "Company" };
+            String[] headers = new string[] { "ID", "Symbol" };
             DataTable tempTable = new DataTable();
 
             //for (int header = 0; header < headers.Length; header++)
             //    tempTable.Columns.Add(headers[header]);
-            foreach (string header in Headers)
-                tempTable.Columns.Add(header);
+           foreach (string header in headers)
+              tempTable.Columns.Add(header);
 
             //Add in Scraped Data to Temp Table
             for (int index = 1; index < classList.Count; index++)

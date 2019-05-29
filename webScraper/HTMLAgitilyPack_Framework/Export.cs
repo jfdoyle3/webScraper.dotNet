@@ -61,18 +61,18 @@ namespace WebScraper
             // Connect and Open Database
             //
             // HAL900
-            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\repository\webScraper\dotNET\webScraper.dotNet\webScraper\ScrapeDB.mdf;Integrated Security=True";
+            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\repository\webScraper\dotNET\webScraper.dotNet\webScraper\ScrapedData.mdf;Integrated Security=True";
 
             // Amuzement
             //string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\repository\webScraper\dotNET\webScraper.dotNet\webScraper\ScrapeDB.mdf; Integrated Security = True";
             // TODO: Write tsble headers to database table
-            
+
             SqlConnection dbConnect = new SqlConnection(connectionString);
             dbConnect.Open();
 
             using (SqlBulkCopy sqlBulk = new SqlBulkCopy(connectionString))
             {
-                sqlBulk.DestinationTableName = "YellowPages";
+                sqlBulk.DestinationTableName = "StockTable";
                 sqlBulk.WriteToServer(tempTable);
             }
 

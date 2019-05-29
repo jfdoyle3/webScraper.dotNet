@@ -18,6 +18,9 @@ namespace WebScraper
             //YahooFinance.Login();
             YahooFinance yf = new YahooFinance();
             List<HtmlNode> stockTable = yf.Login();
+            DataTable tempStockTable = yf.NodesToTable(stockTable);
+            yf.ToDatabase(tempStockTable);
+
             
 
 
