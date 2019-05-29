@@ -15,20 +15,11 @@ namespace WebScraper
     {
         static public void Main(string[] arg)
         {
+            //YahooFinance.Login();
             YahooFinance yf = new YahooFinance();
-            dynamic stockList = yf.Login("jfdoyle_iii", "m93Fe8YHn");
-
-            Console.WriteLine(stockList[1].InnerText);
+            List<HtmlNode> stockTable = yf.Login();
             
-            //for (int index = 1; index < stockList.Count; index++)
-            //{
-            //    Console.WriteLine(stockList[index].InnerText);
-            //}
-            //foreach (HtmlNode node in stockList)
-            //{
 
-            //    Console.WriteLine(node.InnerText.ToString());
-            //}
 
 
         }

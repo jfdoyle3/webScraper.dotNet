@@ -6,12 +6,14 @@ using OpenQA.Selenium.Support.UI;
 using HtmlAgilityPack;
 using System.IO;
 using System.Linq;
+using WebScraper;
 
 namespace Selenium
 {
     public class YahooFinance
     {
-       public dynamic Login(string email, string password)
+
+       public List<HtmlNode> Login()
         {
             using (IWebDriver driver = new ChromeDriver())
             {
@@ -27,7 +29,7 @@ namespace Selenium
                 waitLogin.Until(ExpectedConditions.ElementToBeClickable(By.Id("login-username")));
 
                 IWebElement LoginField = driver.FindElement(By.Id("login-username"));
-                LoginField.SendKeys(email);
+                LoginField.SendKeys("jfdoyle_iii");
                 LoginField.SendKeys(Keys.Enter);
 
                 WebDriverWait waitPassword= new WebDriverWait(driver, TimeSpan.FromSeconds(10));
@@ -35,37 +37,31 @@ namespace Selenium
 
 
                 IWebElement passwordField = driver.FindElement(By.Id("login-passwd"));
-                passwordField.SendKeys(password);
+                passwordField.SendKeys("m93Fe8YHn");
                 passwordField.SendKeys(Keys.Enter);
 
-                
-                driver.Navigate().GoToUrl("https://finance.yahoo.com/portfolio/p_2/view/v1");
- 
-                HtmlDocument stocks = new HtmlDocument();
-                stocks.LoadHtml(driver.PageSource);
+               // driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
 
-                List<HtmlNode> classList = stocks.DocumentNode
+                driver.Navigate().GoToUrl("https://finance.yahoo.com/portfolio/p_2/view/v1");
+                WebDriverWait waitStockTable = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+                waitStockTable.Until(ExpectedConditions.ElementExists(By.XPath("//table")));
+
+
+                HtmlDocument financePage = new HtmlDocument();
+                financePage.LoadHtml(driver.PageSource);
+
+                List<HtmlNode> stockTable = financePage.DocumentNode
                                                 .SelectNodes("//tr")
                                                 .ToList();
-                                               
-                // Testing returns table
-                //foreach(HtmlNode node in classList)
-                //{
 
-                //    Console.WriteLine(node.InnerText.ToString());
-                //}
-                return classList;
+                foreach (HtmlNode node in stockTable)
+                {
+                    Console.WriteLine(node.InnerText.ToString());
+                }
+                return stockTable;
+                
             }
         }
-        //public static void WaitForIt(string id)
-        //{
-        //    using (IWebDriver driver = new ChromeDriver())
-        //    {
-        //        WebDriverWait waitSignIn = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-        //        waitSignIn.Until(ExpectedConditions.ElementToBeClickable(By.Id(id)));
-
-        //    }
-
-        //}        
+      
     }
 }
