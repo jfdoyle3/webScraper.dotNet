@@ -23,21 +23,21 @@ namespace WebScraper
             for (int index = 0; index < value.Count; index++)
             {
                 HtmlNode className = value[index];
-                Console.WriteLine("{0}", className.InnerText);
-                //if (index % 2 == 0)
-                //{
-                //    Console.BackgroundColor = ConsoleColor.DarkGray;
-                //    Console.ForegroundColor = ConsoleColor.DarkBlue;
-                //    Console.WriteLine("{0}", className.InnerText);
-                //}
-                //else
-                //{
-                //    Console.BackgroundColor = ConsoleColor.DarkBlue;
-                //    Console.ForegroundColor = ConsoleColor.DarkGray;
-                //    Console.WriteLine("{0}", className.InnerText);
-                
-                //}
-                //Console.ResetColor();
+                // Console.WriteLine("{0}", className.InnerText);
+                if (index % 2 == 0)
+                {
+                    Console.BackgroundColor = ConsoleColor.DarkGray;
+                    Console.ForegroundColor = ConsoleColor.DarkBlue;
+                    Console.WriteLine("{0}", className.InnerText);
+                }
+                else
+                {
+                    Console.BackgroundColor = ConsoleColor.DarkBlue;
+                    Console.ForegroundColor = ConsoleColor.DarkGray;
+                    Console.WriteLine("{0}", className.InnerText);
+
+                }
+                Console.ResetColor();
             }
         }
 

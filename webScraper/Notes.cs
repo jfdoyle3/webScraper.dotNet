@@ -49,17 +49,13 @@ namespace WebScraper
 
 
 
-        // yellow pages
-        // Yellow.BikeYellow(); 
+        
 
         // Yellow Pages - Working/Test
         //String webSite = "https://www.yellowpages.com/search?search_terms=bicycles&geo_location_terms=Providence%2C+RI";
         // String xPath = "//a[@class='business-name']";
         //string xPath = "//div[@class='v-card']";
-        // ListNode scrapeNode = new ListNode(webSite, xPath);
-        // List<HtmlNode> nodeList = scrapeNode.NodesToList();
-        // scrapeNode.ToScreen(nodeList);
-
+       
 
 
         //Yahoo Finance
@@ -67,7 +63,7 @@ namespace WebScraper
         //  String xPath = "//";
 
 
-        //Top of fiance Table
+        //Top of finance Table
         //String xPath = "//div[@class='']";
         // String xPath="//div id='pf-detail-table' class='Pos(r) '";
         // String xPath="//div[@id='pf-detail-table']";
@@ -78,26 +74,29 @@ namespace WebScraper
         // label in table
         // String xPath= "//td[@aria-label='Change']";
         //String xPath = "//table[@class='W(100%)']";
-       // ListNode stocks = new ListNode(url, xPath);
-        //stocks.GetChildNodes();
-            //List<HtmlNode> stockList=stocks.NodesToList();
-            // stocks.ToScreen(stockList);
+     
+       
 
 
-            //String[] xPath = new "//a[@class='phones phone primary']";
-            // String[] headers = new string[2] { "Company", "Phone"};
-            //String[] xPath =new string[2] { "//a[@class='business-name']", "//a[@class='phones phone primary']" };
-            // String[] headers = new string[2] { "Company","Phone" };
-            //String[] xPath = new string[2] { "//a[@class='business-name']","//div[@class='phones phone primary']"};
-            // var scrape = new MultiClass(webSite,xPath,headers);
-            // var table = scrape.MultiNodestoTable();
-            //scrape.ViewDataTable(table);
-            //scrape.ToDatabase(table);
+        //String[] xPath = new "//a[@class='phones phone primary']";
+        // String[] headers = new string[2] { "Company", "Phone"};
+        //String[] xPath =new string[2] { "//a[@class='business-name']", "//a[@class='phones phone primary']" };
+        // String[] headers = new string[2] { "Company","Phone" };
+        //String[] xPath = new string[2] { "//a[@class='business-name']","//div[@class='phones phone primary']"};
+       
 
-            //TablePrinter t = new TablePrinter("id", "Column A", "Column B","Column C","Column ABC");
-            //t.AddRow(1, "Val A1", "Val B1","Val C1","Val 123");
-            //t.AddRow(2, "Val A2", "Val B2","Val C2","Val 456");
-            //t.AddRow(100, "Val A100", "Val B100","Val C100","Val 888");
-            //t.Print();
+        //TablePrinter t = new TablePrinter("id", "Column A", "Column B","Column C","Column ABC");
+        //t.AddRow(1, "Val A1", "Val B1","Val C1","Val 123");
+        //t.AddRow(2, "Val A2", "Val B2","Val C2","Val 456");
+        //t.AddRow(100, "Val A100", "Val B100","Val C100","Val 888");
+        //t.Print();
+
+        // Automated Yahoo Login - inherited classes
+        //YahooFinance yf = new YahooFinance();
+        //List<HtmlNode> stockTable = yf.Login();
+
+        // Working code: Crashes: Data overflow
+        //DataTable tempStockTable = yf.NodesToTable(stockTable);
+        //yf.ToDatabase(tempStockTable);
     }
 }

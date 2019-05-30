@@ -6,45 +6,42 @@ using HtmlAgilityPack;
 
 namespace WebScraper
 {
-    // Regex for 3 character Upper - Symbol
+   // Regex for 3 character Upper - Symbol
    // /(.*[A-Z]){3}/i
     public class Search : Export
 
     {
-        private String WebSite { get;  set; }
-        private String XPath { get;  set; }
-        private String RegexPattern { get; }
+     
+      private String RegexPattern { get; }
 
         
-        private readonly List<string> extractedText = new List<string>();
-        public Search(string webSite, string xPath, string pattern)
-        {
-            this.WebSite = webSite;
-            this.XPath = xPath;
-            this.RegexPattern = pattern;
+      private readonly List<string> extractedText = new List<string>();
+      public Search(string pattern)
+      {
+          this.RegexPattern = pattern;
 
-        }
-       
-        public void Find()
+      }
+
+        public dynamic Find(List<HtmlNode> stockTable)
         {
-                         
-            HtmlWeb web = new HtmlWeb();
-            HtmlDocument doc = web.Load(WebSite);
-               
-            HtmlNodeCollection Node = doc.DocumentNode.SelectNodes(XPath);
+
+            //HtmlWeb web = new HtmlWeb();
+            //HtmlDocument doc = web.Load(WebSite);
+
+            //HtmlNodeCollection Node = doc.DocumentNode.SelectNodes(XPath);
             Regex search = new Regex(RegexPattern);
 
-            foreach (HtmlNode node in Node)
+            foreach (HtmlNode node in stockTable)
                 if (Regex.IsMatch(node.InnerText, RegexPattern))
-                     extractedText.Add(node.InnerText);
+                    extractedText.Add(node.InnerText);
 
-           foreach (string foundPattern in extractedText)
-               Console.WriteLine(foundPattern);
+            foreach (string foundPattern in extractedText)
+                Console.WriteLine(foundPattern);
 
-           Console.WriteLine();
-           Console.WriteLine("Regex pattern: {0}", search);
+            Console.WriteLine();
+            Console.WriteLine("Regex pattern: {0}", search);
 
-           // return extractedText;
+            return extractedText;
         }
 
     }

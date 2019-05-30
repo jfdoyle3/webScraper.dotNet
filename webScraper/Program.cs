@@ -15,13 +15,23 @@ namespace WebScraper
     {
         static public void Main(string[] arg)
         {
-            //YahooFinance.Login();
-            YahooFinance yf = new YahooFinance();
-            List<HtmlNode> stockTable = yf.Login();
-            DataTable tempStockTable = yf.NodesToTable(stockTable);
-            yf.ToDatabase(tempStockTable);
+            FromFile scrape = new FromFile();
+            List<HtmlNode> stockTable=scrape.ReadFile();
+            // scrape.ToFile(stockTable);
+            NodetoString tableData = new NodetoString();
+            tableData.StringMe(stockTable);
+            string html = tableData.StringMe(stockTable);
+            Console.WriteLine(html);
+            var htmlDoc = new HtmlDocument();
+            htmlDoc.LoadHtml(html);
 
-            
+            var htmlBody = htmlDoc.DocumentNode.SelectNodes("/td[@aria-label='Volume']").ToList();
+            foreach (var item in htmlBody)
+            {
+                Console.WriteLine(item.InnerText);
+            }
+
+
 
 
 

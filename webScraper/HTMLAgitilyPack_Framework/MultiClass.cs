@@ -10,26 +10,24 @@ namespace WebScraper
 {
     public class MultiClass : Export
     {
-        private String WebSite { get; set; }
-        private String[] XPath { get; set; }
+
         private String[] Headers { get; set; }
 
 
 
         private readonly List<HtmlNode> classList = new List<HtmlNode>();
 
-        public MultiClass(String webSite, String[] xPath, String[] headers)
+        public MultiClass( String[] headers)
         {
-            this.WebSite = webSite;
-            this.XPath = xPath;
+            
             this.Headers = headers;
         }
 
 
-        public dynamic MultiNodestoTable()
+        public dynamic MultiNodestoTable(string XPath)
         {
-            HtmlWeb web = new HtmlWeb();
-            HtmlDocument doc = web.Load(WebSite);
+            //HtmlWeb web = new HtmlWeb();
+            //HtmlDocument doc = web.Load(WebSite);
 
             DataTable tempTable = new DataTable();
             
@@ -38,9 +36,9 @@ namespace WebScraper
                   
                  tempTable.Columns.Add(Headers[xPathIndex]);    
               
-                List<HtmlNode> classList = doc.DocumentNode
-                                              .SelectNodes(XPath[xPathIndex])
-                                              .ToList();
+               // List<HtmlNode> classList = doc.DocumentNode
+                //                              .SelectNodes(XPath[xPathIndex])
+                //                              .ToList();
                 
                 //  Add in Scraped Data to Temp Table
 

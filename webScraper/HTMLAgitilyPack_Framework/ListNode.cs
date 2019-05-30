@@ -60,48 +60,6 @@ namespace WebScraper
             }
             return tempTable;
         }
-        //public void GetInnerText()
-        //{ 
-        //    HtmlWeb web = new HtmlWeb();
-        //    HtmlDocument doc = web.Load(WebSite);
-        //    HtmlNodeCollection htmlNodes = doc.DocumentNode.SelectNodes(XPath);
-        
-        //    foreach (HtmlNode node in htmlNodes)
-        //    {
-        //        Console.WriteLine(node.InnerText);
-        //    }
-        //}
-        //public void GetChildNodes()
-        //{
-        //    HtmlWeb web = new HtmlWeb();
-        //    HtmlDocument doc = web.Load(WebSite);
-        //    HtmlNode htmlNode = doc.DocumentNode.SelectSingleNode(XPath);
-
-        //    HtmlNodeCollection childNodes = htmlNode.ChildNodes;
-        //    //Console.WriteLine(childNodes);
-        //    //if (childNodes == null)
-        //    //{
-        //    //    Console.WriteLine("Null");
-        //    //}
-        //    //else
-        //    //{
-        //    //    foreach (HtmlNode node in childNodes)
-        //    //    {
-        //    //        if (node.NodeType == HtmlNodeType.Element)
-        //    //            Console.WriteLine(node.InnerHtml);
-        //    //    }
-        // }
-        // public void GetInnerHtml()
-        //    {
-        //        HtmlWeb web = new HtmlWeb();
-        //        HtmlDocument doc = web.Load(WebSite);
-        //        HtmlNodeCollection htmlNodes = doc.DocumentNode.SelectNodes(XPath);
-
-        //        foreach (HtmlNode node in htmlNodes)
-        //        {
-        //            Console.WriteLine(node.InnerHtml);
-        //        }
-        // }
         
     }
 }
