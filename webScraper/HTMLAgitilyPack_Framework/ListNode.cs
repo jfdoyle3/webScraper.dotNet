@@ -42,24 +42,25 @@ namespace WebScraper
             }
                 //return classList;
         }
-        public dynamic NodesToTable( List<HtmlNode> classList)
-        {
-            String[] headers = new string[] { "ID", "Symbol" };
-            DataTable tempTable = new DataTable();
+        // moved to class nodetostring
+        //public dynamic NodesToTable( List<HtmlNode> dataList)
+        //{
+        //    String[] headers = new string[] { "ID", "Symbol" };
+        //    DataTable tempTable = new DataTable();
 
-            //for (int header = 0; header < headers.Length; header++)
-            //    tempTable.Columns.Add(headers[header]);
-           foreach (string header in headers)
-              tempTable.Columns.Add(header);
+        //    //for (int header = 0; header < headers.Length; header++)
+        //    //    tempTable.Columns.Add(headers[header]);
+        //   foreach (string header in headers)
+        //      tempTable.Columns.Add(header);
 
-            //Add in Scraped Data to Temp Table
-            for (int index = 1; index < classList.Count; index++)
-            {
-                HtmlNode className = classList[index];
-                tempTable.Rows.Add(index, className.InnerText);
-            }
-            return tempTable;
-        }
+        //    //Add in Scraped Data to Temp Table
+        //    for (int index = 1; index < classList.Count; index++)
+        //    {
+        //        HtmlNode className = classList[index];
+        //        tempTable.Rows.Add(index, className.InnerText);
+        //    }
+        //    return tempTable;
+        //}
         
     }
 }

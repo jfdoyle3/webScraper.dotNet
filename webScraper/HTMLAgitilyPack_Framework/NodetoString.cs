@@ -13,12 +13,12 @@ namespace WebScraper
 {
     class NodetoString 
     {
-        public dynamic StringMe(List<HtmlNode> stockTable)
+        public dynamic StringNode(List<HtmlNode> stockTable)
         {
             List<String> stockHtml = new List<string>();
             List<String> stockText = new List<string>();
 
-            foreach (var node in stockTable)
+            foreach (HtmlNode node in stockTable)
             {
                 stockHtml.Add(node.InnerHtml);
                 stockText.Add(node.InnerText);
@@ -27,11 +27,30 @@ namespace WebScraper
             string html = String.Join("", stockHtml);
             string text = String.Join("", stockText);
 
-            //Console.WriteLine(html);
-            //Console.WriteLine();
-            //Console.WriteLine(text);
-
             return html;
+        }
+
+        public dynamic NodesToTable(HtmlNode[] dataList)
+        {
+          // String[] headers = new string[2] { "ID", "Symbol" };
+            DataTable tempTable = new DataTable();
+            tempTable.Columns.Add("ID");
+            tempTable.Columns.Add("Symbol");
+            //for (int header = 0; header < headers.Length; header++)
+            //{
+            //    tempTable.Columns.Add(headers[header]);
+            //}
+            //foreach (HtmlNode header in dataList)
+            //{
+            //    tempTable.Columns.Add(header.InnerText);
+            //}
+          //  Add in Scraped Data to Temp Table
+            for (int index = 0; index < dataList.Length; index++)
+            {
+                HtmlNode className = dataList[index];
+                tempTable.Rows.Add(index, className.InnerText);
+            }
+            return tempTable;
         }
     }
 }

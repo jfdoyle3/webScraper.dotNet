@@ -15,21 +15,40 @@ namespace WebScraper
     {
         static public void Main(string[] arg)
         {
-            FromFile scrape = new FromFile();
-            List<HtmlNode> stockTable=scrape.ReadFile();
-            // scrape.ToFile(stockTable);
-            NodetoString tableData = new NodetoString();
-            tableData.StringMe(stockTable);
-            string html = tableData.StringMe(stockTable);
-            Console.WriteLine(html);
-            var htmlDoc = new HtmlDocument();
-            htmlDoc.LoadHtml(html);
 
-            var htmlBody = htmlDoc.DocumentNode.SelectNodes("/td[@aria-label='Volume']").ToList();
-            foreach (var item in htmlBody)
-            {
-                Console.WriteLine(item.InnerText);
-            }
+            // Automated Yahoo Login - inherited classes
+            //YahooFinance yf = new YahooFinance();
+            //List<HtmlNode> stockTable = yf.Login();
+
+            // From File
+            FromFile scrape = new FromFile();
+            List<HtmlNode> stockTable = scrape.ReadFile();
+
+            // new code below here
+            //
+
+            
+            NodetoString tableData = new NodetoString();
+            tableData.StringNode(stockTable);
+            string html = tableData.StringNode(stockTable);
+            // Console.WriteLine(html);
+            HtmlDocument htmlDoc = new HtmlDocument();
+            htmlDoc.LoadHtml(html);
+            // "/th"                        = Table Headers
+            // "/td[@aria-label='Symbol']"  = Data Columns
+           
+            HtmlNode[] symbols= htmlDoc.DocumentNode
+                                            .SelectNodes("/td[@aria-label='Symbol']")
+                                            .ToArray();
+            DataTable symbolsData=tableData.NodesToTable(symbols);
+            scrape.ToDatabase(symbolsData);
+   
+            //foreach (var item in htmlBody)
+
+            //{
+            //    Console.WriteLine(item.InnerText);
+            //}
+            //Console.WriteLine(htmlBody[1].InnerText);
 
 
 

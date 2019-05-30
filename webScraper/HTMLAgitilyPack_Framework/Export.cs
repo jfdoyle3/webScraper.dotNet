@@ -72,7 +72,7 @@ namespace WebScraper
 
             using (SqlBulkCopy sqlBulk = new SqlBulkCopy(connectionString))
             {
-                sqlBulk.DestinationTableName = "StockTable";
+                sqlBulk.DestinationTableName = "Stocks";
                 sqlBulk.WriteToServer(tempTable);
             }
 

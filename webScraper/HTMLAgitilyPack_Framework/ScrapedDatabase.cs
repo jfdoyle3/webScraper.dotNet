@@ -33,7 +33,7 @@ namespace WebScraper
         SqlCommand viewTable;
         SqlDataReader dataReader;
         String sql, Output = "";
-        sql = "Select ID,Symbol from StockTable";
+        sql = "Select ID,Symbol from Stocks";
             viewTable = new SqlCommand(sql, cnn);
         dataReader = viewTable.ExecuteReader();
             // TODO:  Have to alter code to accept dynamic values: fixed 2 variable current
