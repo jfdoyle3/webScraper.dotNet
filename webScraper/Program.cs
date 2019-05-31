@@ -38,17 +38,11 @@ namespace WebScraper
             // "/td[@aria-label='Symbol']"  = Data Columns
            
             HtmlNode[] symbols= htmlDoc.DocumentNode
-                                            .SelectNodes("/td[@aria-label='Symbol']")
+                                            .SelectNodes("/th")
                                             .ToArray();
             DataTable symbolsData=tableData.NodesToTable(symbols);
             scrape.ToDatabase(symbolsData);
    
-            //foreach (var item in htmlBody)
-
-            //{
-            //    Console.WriteLine(item.InnerText);
-            //}
-            //Console.WriteLine(htmlBody[1].InnerText);
 
 
 

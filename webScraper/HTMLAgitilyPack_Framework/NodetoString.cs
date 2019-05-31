@@ -33,23 +33,29 @@ namespace WebScraper
         public dynamic NodesToTable(HtmlNode[] dataList)
         {
           // String[] headers = new string[2] { "ID", "Symbol" };
-            DataTable tempTable = new DataTable();
+            DataTable tempTable = new DataTable("tempStocksTable");
             tempTable.Columns.Add("ID");
-            tempTable.Columns.Add("Symbol");
-            //for (int header = 0; header < headers.Length; header++)
-            //{
-            //    tempTable.Columns.Add(headers[header]);
-            //}
+            for (int header = 0; header < dataList.Length; header++)
+            {
+                tempTable.Columns.Add(dataList[header].InnerText);
+            }
+            foreach(DataColumn column in tempTable.Columns)
+            {
+                
+                Console.Write(" {0} |", column.ColumnName);
+            }
+
             //foreach (HtmlNode header in dataList)
             //{
             //    tempTable.Columns.Add(header.InnerText);
             //}
-          //  Add in Scraped Data to Temp Table
-            for (int index = 0; index < dataList.Length; index++)
-            {
-                HtmlNode className = dataList[index];
-                tempTable.Rows.Add(index, className.InnerText);
-            }
+
+            //  Add in Scraped Data to Temp Table
+            //for (int index = 0; index < dataList.Length; index++)
+            //{
+            //    HtmlNode className = dataList[index];
+            //    tempTable.Rows.Add(index, className.InnerText);
+            //}
             return tempTable;
         }
     }
