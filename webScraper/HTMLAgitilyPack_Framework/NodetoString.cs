@@ -30,25 +30,35 @@ namespace WebScraper
             return html;
         }
 
-        public dynamic NodesToTable(HtmlNode[] dataList)
+        public dynamic NodesToTable(List<HtmlNode> headerList, List<HtmlNode> stockList)
         {
-          // String[] headers = new string[2] { "ID", "Symbol" };
+            // String[] headers = new string[2] { "ID", "Symbol" };
+           // headerList.RemoveRange(13, 2);
             DataTable tempTable = new DataTable("tempStocksTable");
             tempTable.Columns.Add("ID");
-            for (int header = 0; header < dataList.Length; header++)
+            for (int header = 0; header < headerList.Count; header++)
             {
-                tempTable.Columns.Add(dataList[header].InnerText);
+                tempTable.Columns.Add(headerList[header].InnerText);
+              
             }
             foreach(DataColumn column in tempTable.Columns)
             {
                 
                 Console.Write(" {0} |", column.ColumnName);
             }
-
-            //foreach (HtmlNode header in dataList)
-            //{
-            //    tempTable.Columns.Add(header.InnerText);
-            //}
+            //object[] o = { "1","Ravi", 500 };
+            //object[] p = { "2", "Savi", 600 };
+            //tempTable.Rows.Add(o);
+            //tempTable.Rows.Add(p);
+           // tempTable.Rows.Add(0, stockList[1].InnerText,stockList[2].InnerText);            //foreach (DataRow row in tempTable.Rows)
+            foreach (DataRow row in tempTable.Rows)
+            {
+                Console.WriteLine();
+                foreach (var item in row.ItemArray)
+                {
+                    Console.Write(item);
+                }
+            }
 
             //  Add in Scraped Data to Temp Table
             //for (int index = 0; index < dataList.Length; index++)

@@ -37,11 +37,17 @@ namespace WebScraper
             // "/th"                        = Table Headers
             // "/td[@aria-label='Symbol']"  = Data Columns
            
-            HtmlNode[] symbols= htmlDoc.DocumentNode
+            List <HtmlNode> headers= htmlDoc.DocumentNode
                                             .SelectNodes("/th")
-                                            .ToArray();
-            DataTable symbolsData=tableData.NodesToTable(symbols);
-            scrape.ToDatabase(symbolsData);
+                                            .ToList();
+            List<HtmlNode> stockData = htmlDoc.DocumentNode
+                                            .SelectNodes("/td")
+                                            .ToList();
+
+            DataTable headersData=tableData.NodesToTable(headers,stockData);
+           // scrape.ToDatabase(headersData);
+            //scrape.ToScreen(headersData);
+            
    
 
 
