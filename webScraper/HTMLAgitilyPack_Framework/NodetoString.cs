@@ -30,28 +30,32 @@ namespace WebScraper
             return html;
         }
 
-        public dynamic NodesToTable(List<HtmlNode> headerList, List<HtmlNode> stockList)
+        public dynamic NodesToTable(List<HtmlNode> stockList)
         {
-            // String[] headers = new string[2] { "ID", "Symbol" };
-           // headerList.RemoveRange(13, 2);
-            DataTable tempTable = new DataTable("tempStocksTable");
-            tempTable.Columns.Add("ID");
-            for (int header = 0; header < headerList.Count; header++)
+            String[] headers = new string[3] { "ID", "Symbol","Last Price" };
+            //headerList.RemoveRange(13, 2);
+            DataTable tempTable = new DataTable("tempStocks");
+            //tempTable.Columns.Add("ID");
+            for (int header = 0; header < headers.Length; header++)
             {
-                tempTable.Columns.Add(headerList[header].InnerText);
-              
+                tempTable.Columns.Add(headers[header]);
+
             }
-            foreach(DataColumn column in tempTable.Columns)
+            foreach (DataColumn column in tempTable.Columns)
             {
                 
                 Console.Write(" {0} |", column.ColumnName);
             }
-            //object[] o = { "1","Ravi", 500 };
-            //object[] p = { "2", "Savi", 600 };
-            //tempTable.Rows.Add(o);
-            //tempTable.Rows.Add(p);
-           // tempTable.Rows.Add(0, stockList[1].InnerText,stockList[2].InnerText);            //foreach (DataRow row in tempTable.Rows)
-            foreach (DataRow row in tempTable.Rows)
+            for (int rows = 0; rows < stockList.Count; rows++)
+            {
+               
+                object[] o = { rows, stockList[0].InnerText, stockList[1].InnerText };
+                //object[] p = { "2", "Savi", 600 };
+                tempTable.Rows.Add(o);
+                //tempTable.Rows.Add(p);
+                //tempTable.Rows.Add(0, stockList[1].InnerText,stockList[2].InnerText);            //foreach (DataRow row in tempTable.Rows)
+            }
+                foreach (DataRow row in tempTable.Rows)
             {
                 Console.WriteLine();
                 foreach (var item in row.ItemArray)

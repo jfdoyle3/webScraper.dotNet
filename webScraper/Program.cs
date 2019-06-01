@@ -17,8 +17,8 @@ namespace WebScraper
         {
 
             // Automated Yahoo Login - inherited classes
-            //YahooFinance yf = new YahooFinance();
-            //List<HtmlNode> stockTable = yf.Login();
+            // YahooFinance yf = new YahooFinance();
+            // List<HtmlNode> stockTable = yf.Login();
 
             // From File
             FromFile scrape = new FromFile();
@@ -27,7 +27,7 @@ namespace WebScraper
             // new code below here
             //
 
-            
+
             NodetoString tableData = new NodetoString();
             tableData.StringNode(stockTable);
             string html = tableData.StringNode(stockTable);
@@ -36,19 +36,19 @@ namespace WebScraper
             htmlDoc.LoadHtml(html);
             // "/th"                        = Table Headers
             // "/td[@aria-label='Symbol']"  = Data Columns
-           
-            List <HtmlNode> headers= htmlDoc.DocumentNode
+
+            List<HtmlNode> headers = htmlDoc.DocumentNode
                                             .SelectNodes("/th")
                                             .ToList();
             List<HtmlNode> stockData = htmlDoc.DocumentNode
                                             .SelectNodes("/td")
                                             .ToList();
 
-            DataTable headersData=tableData.NodesToTable(headers,stockData);
-           // scrape.ToDatabase(headersData);
+            DataTable headersData = tableData.NodesToTable(stockData);
+           scrape.ToDatabase(headersData);
             //scrape.ToScreen(headersData);
-            
-   
+
+
 
 
 

@@ -85,7 +85,7 @@ namespace WebScraper
             foreach(DataRow row in table.Rows)
             {
                 Console.WriteLine();
-                foreach (var item in row.ItemArray)
+                foreach (Object item in row.ItemArray)
                 {
                     Console.WriteLine(item);
                 }
