@@ -40,7 +40,7 @@ namespace Selenium
                 passwordField.SendKeys("m93Fe8YHn");
                 passwordField.SendKeys(Keys.Enter);
 
-               // driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+
 
                 driver.Navigate().GoToUrl("https://finance.yahoo.com/portfolio/p_2/view/v1");
                 WebDriverWait waitStockTable = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
@@ -61,7 +61,7 @@ namespace Selenium
                 return stockTable;
                 
             }
-        }
+       }
       
     }
 }

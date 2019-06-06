@@ -34,6 +34,7 @@ namespace WebScraper
             // Console.WriteLine(html);
             HtmlDocument htmlDoc = new HtmlDocument();
             htmlDoc.LoadHtml(html);
+
             // "/th"                        = Table Headers
             // "/td[@aria-label='Symbol']"  = Data Columns
 
@@ -41,13 +42,16 @@ namespace WebScraper
                                             .SelectNodes("/th")
                                             .ToList();
             List<HtmlNode> stockData = htmlDoc.DocumentNode
-                                            .SelectNodes("/td")
+                                            .SelectNodes("//td")
                                             .ToList();
 
-            DataTable headersData = tableData.NodesToTable(stockData);
-           scrape.ToDatabase(headersData);
-            //scrape.ToScreen(headersData);
+            Console.WriteLine(headers.Count);
+            // ListConverter.ListToItem(stockData);
+            NodetoString nts = new NodetoString();
+            dynamic dTable=nts.NodesToTable(headers, stockData);
+            //nts.ViewDataTable(dTable);
 
+            //StockDataTable.StkDataTbl();
 
 
 
