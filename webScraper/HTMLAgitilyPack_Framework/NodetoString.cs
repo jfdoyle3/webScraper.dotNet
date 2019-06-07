@@ -32,64 +32,30 @@ namespace WebScraper
 
         public dynamic NodesToTable(List <HtmlNode> headers, List<HtmlNode> stockList)
         {
-           // String[] headers = new string[3] { "ID", "Symbol","Last Price" 
-            //headers.RemoveRange(13, 2);
+            headers.RemoveRange(3,12);
             DataTable tempTable = new DataTable("tempStocks");
-            //tempTable.Columns.Add("ID");
-            //for (int header = 0; header < headers.Count; header++)
-            //{
-            //    tempTable.Columns.Add(headers[header]);
+            
 
-            //}
-            //foreach(var item in headers)
-            //{
-            //    tempTable.Columns.Add(item.InnerText);
-            //}
-            foreach (DataColumn column in tempTable.Columns)
+            foreach (var item in headers)
             {
-                
-                Console.Write(" {0}", column.ColumnName);
+                tempTable.Columns.Add(item.InnerText);
+                Console.WriteLine(item.InnerText);
             }
-            //for (int rows = 0; rows < stockList.Count; rows++)
-            //{
 
-            //    object[] o = { rows, stockList[0].InnerText, stockList[1].InnerText };
-            //    //object[] p = { "2", "Savi", 600 };
-            //    tempTable.Rows.Add(o);
-            //    //tempTable.Rows.Add(p);
-            //    //tempTable.Rows.Add(0, stockList[1].InnerText,stockList[2].InnerText);            //foreach (DataRow row in tempTable.Rows)
-            //}
-            //    foreach (DataRow row in tempTable.Rows)
-            //{
-            //    Console.WriteLine();
-            //    foreach (var item in row.ItemArray)
-            //    {
-            //        Console.Write(item);
-            //    }
-            //}
             int count = 0;
             for (int rows = 0; rows < 12; rows++)
             {
-               
-                for (int s = count; s <= count + 15; s++)
+                for (int s = count; s <= count + 3; s++)
                 {
-                   Console.Write("{0}", stockList[s].InnerText);
-                   // tempTable.Rows.Add(stockList[s].InnerText);
+                    Console.Write(stockList[s].InnerText);
+                    tempTable.Rows.Add(stockList[s].InnerText);
                 }
-                
-            count = count + 16;
-            
-                Console.WriteLine();
-            }
-            //  Add in Scraped Data to Temp Table
-            //for (int index = 0; index < dataList.Length; index++)
-            //{
-            //    HtmlNode className = dataList[index];
-            //    tempTable.Rows.Add(index, className.InnerText);
-            //}
+                //Console.Write("<--|-->\n");
+                count = count + 3;
 
-           
-               return tempTable;
+            }
+
+            return tempTable;
         }
     }
 }

@@ -45,18 +45,13 @@ namespace WebScraper
                                             .SelectNodes("//td")
                                             .ToList();
 
-            Console.WriteLine(headers.Count);
+          
             // ListConverter.ListToItem(stockData);
             NodetoString nts = new NodetoString();
             dynamic dTable=nts.NodesToTable(headers, stockData);
-            //nts.ViewDataTable(dTable);
+            nts.ToDatabase(dTable);
 
             //StockDataTable.StkDataTbl();
-
-
-
-
-
 
         }
     }

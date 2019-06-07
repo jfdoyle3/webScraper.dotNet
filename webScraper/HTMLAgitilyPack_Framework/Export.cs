@@ -69,7 +69,7 @@ namespace WebScraper
 
             SqlConnection dbConnect = new SqlConnection(connectionString);
             dbConnect.Open();
-
+            Console.WriteLine("database open");
             using (SqlBulkCopy sqlBulk = new SqlBulkCopy(connectionString))
             {
                 sqlBulk.DestinationTableName = "Stocks";

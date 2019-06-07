@@ -59,7 +59,7 @@ namespace Selenium
                     Console.WriteLine(node.InnerText.ToString());
                 }
                 return stockTable;
-                
+ 
             }
        }
       
