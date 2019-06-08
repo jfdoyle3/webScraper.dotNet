@@ -122,25 +122,39 @@ namespace WebScraper
 
         //}
         public void DataBaseTest()
+
+            //This Works
         {
             // HAL900
              string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\repository\webScraper\dotNET\webScraper.dotNet\webScraper\ScrapedData.mdf;Integrated Security=True";
 
             // Amuzement
             //string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\repository\webScraper\dotNET\webScraper.dotNet\webScraper\ScrapedData.mdf;Integrated Security=True";
-            //SqlConnection cnn = new SqlConnection(connectionString);
-            //cnn.Open();
+
+            string[] fields ={ "@Symbol", "@LastPrice", "@Change", "@ChgPc", "@Currency", "@MarketTime", "@Volume", "@Shares", "@AvgVol3m", "@DayRange", "@Wk52Range", "@DayChart", "@MarketCap", "@junk"};
+            string[] data = { "AMD", "$1.23", "-0.15", "+1.23", "USD", "4:00pm", "5.5b", "32", "34.65m", "3-5", "4-7", "chart", "100b", "buy/sell" };
+
+            Console.WriteLine("f:{0} | d:{1}",fields.Length,data.Length);
 
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                //String query = "INSERT INTO dbo.Table (Symbol,LastPrice,Change,ChgPc,Currency,MarketTime,Volume,Shares,AvgVol3m,DayRange,Wk52Range,DayChart,MarketCap,junk) VALUES (Symbol,LastPrice,Change,ChgPc,Currency,MarketTime,Volume,Shares,AvgVol3m,DayRange,Wk52Range,DayChart,MarketCap,junk)";
-                String query = "INSERT INTO Stock.dTable (Symbol,LastPrice,Change) VALUES (Symbol,LastPrice,Change)";
+                String query = "INSERT INTO TestTable (Symbol,LastPrice,Change,ChgPc,Currency,MarketTime,Volume,Shares,AvgVol3m,DayRange,Wk52Range,DayChart,MarketCap,junk) VALUES (@Symbol,@LastPrice,@Change,@ChgPc,@Currency,@MarketTime,@Volume,@Shares,@AvgVol3m,@DayRange,@Wk52Range,@DayChart,@MarketCap,@junk)";
+
+
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@Symbol", "CVS");
-                    command.Parameters.AddWithValue("@LastPrice", "-0.15");
-                    command.Parameters.AddWithValue("@Change", "-4.65");
+
+
+                    for (int i = 0; i < fields.Length; i++)
+                    {
+                        command.Parameters.AddWithValue(fields[i], data[i]);
+                    }
+
+
+                    //command.Parameters.AddWithValue("@Symbol", "CVS");
+                    //command.Parameters.AddWithValue("@LastPrice", "-0.15");
+                    //command.Parameters.AddWithValue("@Change", "-4.65");
                     //command.Parameters.AddWithValue("@ChgPc", "$1,234");
                     //command.Parameters.AddWithValue("@Currency", "USA");
                     //command.Parameters.AddWithValue("@MarketTime", "1.55");
@@ -152,7 +166,7 @@ namespace WebScraper
                     //command.Parameters.AddWithValue("@DayChart", "upper");
                     //command.Parameters.AddWithValue("@MarketCap", "100b");
                     //command.Parameters.AddWithValue("@junk", "buy/sell");
-                    
+
 
 
                     connection.Open();
@@ -162,19 +176,19 @@ namespace WebScraper
                     if (result < 0)
                         Console.WriteLine("Error inserting data into Database!");
                 }
-                  connection.Close();
-
-                   Console.WriteLine("Database Closed");
-               
-
+                connection.Close();
             }
+            Console.WriteLine("Database Closed");
 
 
         }
+
+
+     }
         
     }
 
-}
+
 
 
     //Copy the DataTable to SQL Server
