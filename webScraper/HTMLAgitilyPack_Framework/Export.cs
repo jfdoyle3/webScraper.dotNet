@@ -61,10 +61,10 @@ namespace WebScraper
             // Connect and Open Database
             //
             // HAL900
-            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\repository\webScraper\dotNET\webScraper.dotNet\webScraper\ScrapedData.mdf;Integrated Security=True";
+            //string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\repository\webScraper\dotNET\webScraper.dotNet\webScraper\ScrapedData.mdf;Integrated Security=True";
 
             // Amuzement
-            //string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\repository\webScraper\dotNET\webScraper.dotNet\webScraper\ScrapeDB.mdf; Integrated Security = True";
+            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\repository\webScraper\dotNET\webScraper.dotNet\webScraper\ScrapedData.mdf;Integrated Security=True";
             // TODO: Write tsble headers to database table
 
             SqlConnection dbConnect = new SqlConnection(connectionString);
@@ -124,14 +124,17 @@ namespace WebScraper
         public void DataBaseTest()
         {
             // HAL900
-            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\repository\webScraper\dotNET\webScraper.dotNet\webScraper\ScrapedData.mdf;Integrated Security=True";
+            // string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\repository\webScraper\dotNET\webScraper.dotNet\webScraper\ScrapedData.mdf;Integrated Security=True";
+
+            // Amuzement
+            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\repository\webScraper\dotNET\webScraper.dotNet\webScraper\ScrapedData.mdf;Integrated Security=True";
             //SqlConnection cnn = new SqlConnection(connectionString);
             //cnn.Open();
 
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                String query = "INSERT INTO dbo.BTable (Symbol,LastPrice,Change,ChgPc,Currency,MarketTime,Volume,Shares,AvgVol3m,DayRange,Wk52Range,DayChart,MartketCap,junk) VALUES (Symbol,LastPrice,Change,ChgPc,Currency,MarketTime,Volume,Shares,AvgVol3m,DayRange,Wk52Range,DayChart,MartketCap,junk)";
+                String query = "INSERT INTO dbo.CTable (Symbol,LastPrice,Change,ChgPc,Currency,MarketTime,Volume,Shares,AvgVol3m,DayRange,Wk52Range,DayChart,MartketCap,junk) VALUES (Symbol,LastPrice,Change,ChgPc,Currency,MarketTime,Volume,Shares,AvgVol3m,DayRange,Wk52Range,DayChart,MartketCap,junk)";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
