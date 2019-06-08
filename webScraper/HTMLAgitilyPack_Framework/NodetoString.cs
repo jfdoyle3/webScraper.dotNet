@@ -32,28 +32,28 @@ namespace WebScraper
 
         public dynamic NodesToTable(List <HtmlNode> headers, List<HtmlNode> stockList)
         {
-            headers.RemoveRange(3,12);
+            //headers.RemoveRange(3,12);
             DataTable tempTable = new DataTable("tempStocks");
             
 
             foreach (var item in headers)
             {
-                tempTable.Columns.Add(item.InnerText);
+               // tempTable.Columns.Add(item.InnerText);
                 Console.WriteLine(item.InnerText);
             }
 
-            int count = 0;
-            for (int rows = 0; rows < 12; rows++)
-            {
-                for (int s = count; s <= count + 3; s++)
-                {
-                    Console.Write(stockList[s].InnerText);
-                    tempTable.Rows.Add(stockList[s].InnerText);
-                }
-                //Console.Write("<--|-->\n");
-                count = count + 3;
+            //int count = 0;
+            //for (int rows = 0; rows < 12; rows++)
+            //{
+            //    for (int s = count; s <= count + 3; s++)
+            //    {
+            //        Console.Write(stockList[s].InnerText);
+            //        tempTable.Rows.Add(stockList[s].InnerText);
+            //    }
+            //    //Console.Write("<--|-->\n");
+            //    count = count + 3;
 
-            }
+            //}
 
             return tempTable;
         }

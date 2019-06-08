@@ -49,8 +49,8 @@ namespace WebScraper
             // ListConverter.ListToItem(stockData);
             NodetoString nts = new NodetoString();
             dynamic dTable=nts.NodesToTable(headers, stockData);
-            nts.ToDatabase(dTable);
-
+            // nts.ToDatabase(dTable);
+            scrape.DataBaseTest();
             //StockDataTable.StkDataTbl();
 
         }

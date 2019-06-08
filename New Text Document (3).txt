@@ -1,0 +1,16 @@
+CREATE TABLE [dbo].[CTable]
+(
+    [Symbol] NVARCHAR(50) NULL, 
+    [LastPrice] NVARCHAR(50) NULL, 
+    [ChgPc] NVARCHAR(50) NULL, 
+    [Currency] NVARCHAR(50) NULL, 
+    [MarketTime] NVARCHAR(50) NULL, 
+    [Volume] NVARCHAR(50) NULL, 
+    [Shares] NVARCHAR(50) NULL, 
+    [AvgVol3m] NVARCHAR(50) NULL, 
+    [DayRange] NVARCHAR(50) NULL, 
+    [Wk52Range] NVARCHAR(50) NULL, 
+    [DayChart] NVARCHAR(50) NULL, 
+    [MarketCap] NVARCHAR(50) NULL, 
+    [junk] NVARCHAR(50) NULL 
+)
