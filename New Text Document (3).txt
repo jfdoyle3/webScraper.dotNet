@@ -12,6 +12,6 @@ CREATE TABLE [dbo].[CTable]
     [DayRange] NVARCHAR(50) NULL, 
     [Wk52Range] NVARCHAR(50) NULL, 
     [DayChart] NVARCHAR(50) NULL, 
-    [MarketCap] NVARCHAR(50) NULL, 
-    [junk] NVARCHAR(50) NULL 
+    [MarketCap] NVARCHAR(50) NULL 
+ 
 )

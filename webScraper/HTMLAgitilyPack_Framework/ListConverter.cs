@@ -32,7 +32,7 @@ namespace WebScraper
             //for (int rows = 0; rows < 12; rows++)
             //{
 
-            //    for (int s = count; s <= count+16; s++)
+            //    for (int s = count; s <= count + 16; s++)
             //    {
             //        Console.Write(stockRow[s]);
             //    }
@@ -65,7 +65,7 @@ namespace WebScraper
             //}
             //Console.WriteLine(text.Count());
 
-             return stockRow;
+            return stockRow;
 
         }
     }

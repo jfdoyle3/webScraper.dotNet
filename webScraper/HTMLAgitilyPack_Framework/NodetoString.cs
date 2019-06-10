@@ -30,32 +30,33 @@ namespace WebScraper
             return html;
         }
 
-        public dynamic NodesToTable(List <HtmlNode> headers, List<HtmlNode> stockList)
+        public void NodesToTable(List <HtmlNode> headers, List<HtmlNode> stockList)
         {
             //headers.RemoveRange(3,12);
-            DataTable tempTable = new DataTable("tempStocks");
-            
+            // DataTable tempTable = new DataTable("tempStocks");
+            headers.RemoveRange(13, 1);
+            Console.WriteLine("f:{0} | d:{1}", headers.Count, stockList.Count);
 
-            foreach (var item in headers)
-            {
-               // tempTable.Columns.Add(item.InnerText);
-                Console.WriteLine(item.InnerText);
-            }
-
-            //int count = 0;
-            //for (int rows = 0; rows < 12; rows++)
+            //foreach (var item in headers)
             //{
-            //    for (int s = count; s <= count + 3; s++)
-            //    {
-            //        Console.Write(stockList[s].InnerText);
-            //        tempTable.Rows.Add(stockList[s].InnerText);
-            //    }
-            //    //Console.Write("<--|-->\n");
-            //    count = count + 3;
-
+            //   // tempTable.Columns.Add(item.InnerText);
+            //    Console.Write("{0} |",item.InnerText);
             //}
 
-            return tempTable;
+            int count = 0;
+            for (int rows = 0; rows < 12; rows++)
+            {
+                for (int s = count; s <= count + 14; s++)
+                {
+                    Console.Write(stockList[s].InnerText);
+                   // tempTable.Rows.Add(stockList[s].InnerText);
+                }
+                Console.Write("\n");
+                count = count + 13;
+
+            }
+
+           // return tempTable;
         }
     }
 }
