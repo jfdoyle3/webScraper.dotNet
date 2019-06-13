@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,7 @@ using System.Data.SqlClient;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
 using Selenium;
+using System.Xml;
 
 namespace WebScraper
 {
@@ -31,25 +33,65 @@ namespace WebScraper
             NodetoString tableData = new NodetoString();
             tableData.StringNode(stockTable);
             string html = tableData.StringNode(stockTable);
-
-            // Console.WriteLine(html);
+            
             HtmlDocument htmlDoc = new HtmlDocument();
             htmlDoc.LoadHtml(html);
 
             // // "/th"                        = Table Headers
             // // "/td[@aria-label='Symbol']"  = Data Columns
 
-            //List<HtmlNode> headers = htmlDoc.DocumentNode
-            //                                .SelectNodes("/th")
-            //                                .ToList();
+            // List<HtmlNode> headers = htmlDoc.DocumentNode
+            //                                 .SelectNodes("//tr")
+            //                                 .ToList();
             List<HtmlNode> stockData = htmlDoc.DocumentNode
                                             .SelectNodes("//td")
                                             .ToList();
 
 
-            ListConverter cStockData=new ListConverter();
-            dynamic textData = cStockData.ListToItem(stockData);
-            scrape.DataBaseTest(textData);
+            //var node = htmlDoc.DocumentNode.SelectSingleNode("//tr");
+
+            //HtmlNode sibling = node.NextSibling;
+
+            //while (sibling != null)
+            //{
+            //    if (sibling.NodeType == HtmlNodeType.Element)
+            //        Console.Write(sibling.InnerText);
+
+            //    sibling = sibling.NextSibling;
+            //}
+
+
+            //table/tbody/tr[1]/td[1]
+            // tr[1]
+            //HtmlNode[] stockData = htmlDoc.DocumentNode
+            //                               .SelectNodes("//td")
+            //                               .ToArray();
+
+            //foreach(HtmlNode items in stockData)
+            //  Console.Write("{0}, ",items.InnerText);
+
+
+
+
+            // tbody   Ancestor
+            // tr   Parent
+            // td   childern and siblngs
+            // list of array rows tske rows so they can 
+            //ArrayList mylist = new ArrayList(5);
+
+
+
+            ////foreach(var list in mylist)
+            ////   Console.WriteLine(list);
+
+
+            //Console.WriteLine(mylist.Count);
+
+
+
+            ListConverter cStockData = new ListConverter();
+            cStockData.ListToItem(stockData);
+            //scrape.DataBaseTest(textData);
             //int count = 0;
             //for (int q = 0; q < 12; q++)
             //{

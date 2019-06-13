@@ -126,12 +126,12 @@ namespace WebScraper
             //This Works
         {
             // HAL900
-             string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\repository\webScraper\dotNET\webScraper.dotNet\webScraper\ScrapedData.mdf;Integrated Security=True";
+           //  string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\repository\webScraper\dotNET\webScraper.dotNet\webScraper\ScrapedData.mdf;Integrated Security=True";
 
             // Amuzement
             //string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\repository\webScraper\dotNET\webScraper.dotNet\webScraper\ScrapedData.mdf;Integrated Security=True";
 
-           // string[] fields ={ "@Symbol", "@LastPrice", "@Change", "@ChgPc", "@Currency", "@MarketTime", "@Volume", "@Shares", "@AvgVol3m", "@DayRange", "@Wk52Range", "@DayChart", "@MarketCap"};
+         //   string[] fields ={ "@Symbol", "@LastPrice", "@Change", "@ChgPc", "@Currency", "@MarketTime", "@Volume", "@Shares", "@AvgVol3m", "@DayRange", "@Wk52Range", "@DayChart", "@MarketCap"};
            // string[] data = new string[13];
             //for (int w = 0; w < 12; w++)
             //{
@@ -145,19 +145,21 @@ namespace WebScraper
             //    Console.WriteLine("f:{0} | d:{1}", fields.Length, data.Length);
 
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                String query = "INSERT INTO zTable (Symbol,LastPrice,Change,ChgPc,Currency,MarketTime,Volume,Shares,AvgVol3m,DayRange,Wk52Range,DayChart,MarketCap) VALUES (@Symbol,@LastPrice,@Change,@ChgPc,@Currency,@MarketTime,@Volume,@Shares,@AvgVol3m,@DayRange,@Wk52Range,@DayChart,@MarketCap)";
+            //using (SqlConnection connection = new SqlConnection(connectionString))
+            //{
+            //    String query = "INSERT INTO zTable (Symbol,LastPrice,Change,ChgPc,Currency,MarketTime,Volume,Shares,AvgVol3m,DayRange,Wk52Range,DayChart,MarketCap) VALUES (@Symbol,@LastPrice,@Change,@ChgPc,@Currency,@MarketTime,@Volume,@Shares,@AvgVol3m,@DayRange,@Wk52Range,@DayChart,@MarketCap)";
 
 
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
+            //    using (SqlCommand command = new SqlCommand(query, connection))
+            //    {
 
-
-                    //for (int i = 0; i < fields.Length; i++)
-                    //{
-                    //    command.Parameters.AddWithValue(fields[i], data[i]);
-                    //}
+            //        for (var j = 0; j < 10; j++)
+            //        { 
+            //            for (int i = 0; i < fields.Length; i++)
+            //            {
+            //                command.Parameters.AddWithValue(fields[i], data[i]);
+            //            }
+            //        }
 
                     //        //int count = 0;
                     //        //for (int rows = 0; rows < 12; rows++)
@@ -172,33 +174,33 @@ namespace WebScraper
 
                     //        //}
 
-                    command.Parameters.AddWithValue("@Symbol", stockData[0]);
-                    command.Parameters.AddWithValue("@LastPrice", stockData[1]);
-                    command.Parameters.AddWithValue("@Change", stockData[2]);
-                    command.Parameters.AddWithValue("@ChgPc", stockData[3]);
-                    command.Parameters.AddWithValue("@Currency", stockData[4]);
-                    command.Parameters.AddWithValue("@MarketTime", stockData[5]);
-                    command.Parameters.AddWithValue("@Volume", stockData[6]);
-                    command.Parameters.AddWithValue("@Shares", stockData[7]);
-                    command.Parameters.AddWithValue("@AvgVol3m", stockData[8]);
-                    command.Parameters.AddWithValue("@DayRange", stockData[9]);
-                    command.Parameters.AddWithValue("@Wk52Range", stockData[10]);
-                    command.Parameters.AddWithValue("@DayChart", stockData[11]);
-                    command.Parameters.AddWithValue("@MarketCap", stockData[12]);
+            //        command.Parameters.AddWithValue("@Symbol", stockData[0]);
+            //        command.Parameters.AddWithValue("@LastPrice", stockData[1]);
+            //        command.Parameters.AddWithValue("@Change", stockData[2]);
+            //        command.Parameters.AddWithValue("@ChgPc", stockData[3]);
+            //        command.Parameters.AddWithValue("@Currency", stockData[4]);
+            //        command.Parameters.AddWithValue("@MarketTime", stockData[5]);
+            //        command.Parameters.AddWithValue("@Volume", stockData[6]);
+            //        command.Parameters.AddWithValue("@Shares", stockData[7]);
+            //        command.Parameters.AddWithValue("@AvgVol3m", stockData[8]);
+            //        command.Parameters.AddWithValue("@DayRange", stockData[9]);
+            //        command.Parameters.AddWithValue("@Wk52Range", stockData[10]);
+            //        command.Parameters.AddWithValue("@DayChart", stockData[11]);
+            //        command.Parameters.AddWithValue("@MarketCap", stockData[12]);
 
 
 
 
-                    connection.Open();
-                    Console.WriteLine("DB Opened");
-                    int result = command.ExecuteNonQuery();
-                    // Check Error
-                    if (result < 0)
-                        Console.WriteLine("Error inserting data into Database!");
-                }
-                connection.Close();
-            }
-            Console.WriteLine("Database Closed");
+            //        connection.Open();
+            //        Console.WriteLine("DB Opened");
+            //        int result = command.ExecuteNonQuery();
+            //        // Check Error
+            //        if (result < 0)
+            //            Console.WriteLine("Error inserting data into Database!");
+            //    }
+            //    connection.Close();
+            //}
+            //Console.WriteLine("Database Closed");
 
 
         }

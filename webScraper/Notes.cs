@@ -77,7 +77,7 @@ namespace WebScraper
      
        
 
-
+        
         //String[] xPath = new "//a[@class='phones phone primary']";
         // String[] headers = new string[2] { "Company", "Phone"};
         //String[] xPath =new string[2] { "//a[@class='business-name']", "//a[@class='phones phone primary']" };
