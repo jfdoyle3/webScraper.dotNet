@@ -48,6 +48,18 @@ namespace WebScraper
                                             .ToList();
 
 
+
+            ArrayList aList = new ArrayList(stockData);
+            string[,] row = new string[12,14];
+           
+
+            aList.CopyTo(row);
+
+
+
+
+
+
             //var node = htmlDoc.DocumentNode.SelectSingleNode("//tr");
 
             //HtmlNode sibling = node.NextSibling;
@@ -76,7 +88,7 @@ namespace WebScraper
             // tbody   Ancestor
             // tr   Parent
             // td   childern and siblngs
-            // list of array rows tske rows so they can 
+            // list of array rows take rows so they can 
             //ArrayList mylist = new ArrayList(5);
 
 
@@ -89,8 +101,8 @@ namespace WebScraper
 
 
 
-            ListConverter cStockData = new ListConverter();
-            cStockData.ListToItem(stockData);
+            //ListConverter cStockData = new ListConverter();
+            //cStockData.ListToItem(stockData);
             //scrape.DataBaseTest(textData);
             //int count = 0;
             //for (int q = 0; q < 12; q++)
@@ -103,6 +115,12 @@ namespace WebScraper
             //    count = count + 16;
             //}
 
+        }
+        public static void PrintValues(String[] myArr, char mySeparator)
+        {
+            for (int i = 0; i < myArr.Length; i++)
+                Console.Write("{0}{1}", mySeparator, myArr[i]);
+            Console.WriteLine();
         }
     }
 }
